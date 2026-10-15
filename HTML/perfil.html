@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VeraBioma - Bienestar Natural</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        verabioma: '#40582E',
+                        'verabioma-claro': '#6F8B4A',
+                        beige: '#F4F1E7'
+                    },
+                    fontFamily: {
+                        serifVerabioma: ['Georgia', 'serif']
+                    }
+                }
+            }
+        };
+    </script>
+  </head>
+
+  <body>
+    <!-- ENCABEZADO PRINCIPAL -->
+    <header 
+      class="container-header">
+      <div class="logos">
+        <img
+          id="imgVerabioma"
+          src="img/img-logo/logo_verabioma.png"
+          alt="Logo de VeraBioma"
+        />
+        <h1 class="vera1">VeraBioma</h1>
+      </div>
+      <nav id="nav">
+        <ul>
+          <li><a href="inicio.html">Inicio</a></li>
+          <li><a href="producto.html">Producto</a></li>
+          <li><a href="perfil.html">Perfil</a></li>
+          <li><a href="carrito.html">Carrito</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!--Perfil-->
+    <section 
+      id="conteiner-perfil" class="perfil-section">
+      <h1 class="perfil-title">Mi Perfil</h1>
+
+      <div class="container-perfil">
+        <!-- Información del Usuario (PRIMERA POSICIÓN) -->
+        <div class="cont-perf perfil-card usuario-card">
+          <div class="perfil-usuario">
+            <div class="avatar-usuario">
+              <img src="img/img-usuario/usuario-default.jpg" alt="Foto de perfil" />
+              <button class="btn-cambiar-foto" title="Cambiar foto">
+                <i class="fas fa-camera"></i>
+              </button>
+            </div>
+
+            <h3 class="usuario-nombre">Juan Pérez</h3>
+            <p class="usuario-email">juan.perez@email.com</p>
+
+            <div class="info-usuario">
+              <div class="info-item">
+                <i class="fas fa-user"></i>
+                <div>
+                  <span>Nombre Completo</span>
+                  <p>Juan Pérez García</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <div>
+                  <span>Teléfono</span>
+                  <p>+57 300 123 4567</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                  <span>Correo</span>
+                  <p>juan.perez@email.com</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                  <span>Dirección</span>
+                  <p>Calle 123 #45-67, Bogotá</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-credit-card"></i>
+                <div>
+                  <span>Tarjeta</span>
+                  <p>Bancolombia •••• 3456</p>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn-cerrar-sesion">
+              <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </button>
+          </div>
+        </div>
+
+        <!-- Actualizar Datos Personales -->
+        <div class="cont-datosPerf perfil-card">
+          <div class="card-header">
+            <i class="fas fa-user-edit"></i>
+            <h2>Actualiza tus Datos</h2>
+          </div>
+          <p class="card-description">Mantén tu información actualizada</p>
+
+          <div class="button-group">
+            <button class="btn-primary active" onclick="toggleForm('datos')">
+              <i class="fas fa-user"></i> Datos Personales
+            </button>
+            <button class="btn-secondary" onclick="toggleForm('tarjeta')">
+              <i class="fas fa-credit-card"></i> Formas de Pago
+            </button>
+          </div>
+
+          <!-- Formulario de Datos Personales -->
+          <div class="form-container" id="datos">
+            <h3>Datos Personales</h3>
+            <form>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="nombres">Nombres:</label>
+                  <input
+                    type="text"
+                    id="nombres"
+                    name="nombres"
+                    placeholder="Ingresa tus nombres"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="apellidos">Apellidos:</label>
+                  <input
+                    type="text"
+                    id="apellidos"
+                    name="apellidos"
+                    placeholder="Ingresa tus apellidos"
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="telefono">Teléfono:</label>
+                  <input
+                    type="tel"
+                    id="telefono"
+                    name="telefono"
+                    placeholder="Ingresa tu teléfono"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="cod-postal">Código Postal:</label>
+                  <input
+                    type="text"
+                    id="cod-postal"
+                    name="cod-postal"
+                    placeholder="Código postal"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="direccion">Dirección:</label>
+                <input
+                  type="text"
+                  id="direccion"
+                  name="direccion"
+                  placeholder="Ingresa tu dirección completa"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="nota-casa">Nota para tu casa:</label>
+                <textarea
+                  id="nota-casa"
+                  name="nota-casa"
+                  rows="3"
+                  placeholder="Ej: Apartamento 302, edificio azul, cerca al parque"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn-submit">
+                <i class="fas fa-save"></i> Guardar Cambios
+              </button>
+            </form>
+          </div>
+
+          <!-- Formulario de Tarjeta -->
+          <div class="form-container hidden" id="tarjeta">
+            <h3>Datos de Pago</h3>
+            <form>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="nombre-propietario"
+                    >Nombre del Propietario:</label
+                  >
+                  <input
+                    type="text"
+                    id="nombre-propietario"
+                    name="nombre-propietario"
+                    placeholder="Nombre en la tarjeta"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="apellido-propietario">Apellido:</label>
+                  <input
+                    type="text"
+                    id="apellido-propietario"
+                    name="apellido-propietario"
+                    placeholder="Apellido en la tarjeta"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="tipo-tarjeta">Tipo de Tarjeta:</label>
+                <select id="tipo-tarjeta" name="tipo-tarjeta">
+                  <option value="">Selecciona un tipo</option>
+                  <option value="credito">Tarjeta de Crédito</option>
+                  <option value="debito">Tarjeta de Débito</option>
+                  <option value="nequi">Nequi</option>
+                  <option value="bancolombia">Bancolombia</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="numero-serie">Número de Serie:</label>
+                <input
+                  type="text"
+                  id="numero-serie"
+                  name="numero-serie"
+                  placeholder="1234 5678 9012 3456"
+                />
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fecha-vencimiento">Vencimiento:</label>
+                  <input
+                    type="text"
+                    id="fecha-vencimiento"
+                    name="fecha-vencimiento"
+                    placeholder="MM/AA"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="cvv">CVV:</label>
+                  <input
+                    type="password"
+                    id="cvv"
+                    name="cvv"
+                    placeholder="123"
+                  />
+                </div>
+              </div>
+
+              <button type="submit" class="btn-submit">
+                <i class="fas fa-save"></i> Guardar Tarjeta
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Mensajes Promocionales -->
+        <div class="cont-mensajesProm perfil-card">
+          <div class="card-header">
+            <i class="fas fa-envelope"></i>
+            <h2>Mensajes</h2>
+          </div>
+          <p class="card-description">Promociones y avisos de tus pedidos</p>
+
+          <div class="mensajes-list">
+            <a href="producto.htmlPromoK" class="mensaje-item">
+              <i class="fas fa-tag"></i>
+              <div class="mensaje-content">
+                <span class="mensaje-titulo">Promoción: Kéfir</span>
+                <span class="mensaje-desc">20% de descuento esta semana</span>
+              </div>
+              <i class="fas fa-chevron-right"></i>
+            </a>
+
+            <a href="producto.htmlPromoC" class="mensaje-item">
+              <i class="fas fa-tag"></i>
+              <div class="mensaje-content">
+                <span class="mensaje-titulo">Promoción: Colágeno</span>
+                <span class="mensaje-desc">Lleva 2 y paga 1</span>
+              </div>
+              <i class="fas fa-chevron-right"></i>
+            </a>
+
+            <a href="producto.htmlPromoP" class="mensaje-item">
+              <i class="fas fa-tag"></i>
+              <div class="mensaje-content">
+                <span class="mensaje-titulo">Promoción: Colágeno Pet</span>
+                <span class="mensaje-desc">Envío gratis hoy</span>
+              </div>
+              <i class="fas fa-chevron-right"></i>
+            </a>
+
+            <a href="#pedidoActualizacion" class="mensaje-item">
+              <i class="fas fa-truck"></i>
+              <div class="mensaje-content">
+                <span class="mensaje-titulo">Actualización de Pedido</span>
+                <span class="mensaje-desc">Tu pedido está en camino</span>
+              </div>
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Historial de Pedidos -->
+        <div class="cont-pedi perfil-card">
+          <div class="card-header">
+            <i class="fas fa-history"></i>
+            <h2>Historial de Pedidos</h2>
+          </div>
+          <p class="card-description">Seguimiento de tus compras</p>
+
+          <!-- Pedidos en Curso -->
+          <div class="pedidos-en-curso">
+            <h3 class="seccion-titulo">
+              <i class="fas fa-truck"></i> En Curso
+            </h3>
+
+            <div class="pedido-card">
+              <div class="pedido-header">
+                <span class="estado-pedido empacando">Empacando</span>
+                <span class="fecha-pedido">Hoy, 10:30 AM</span>
+              </div>
+              <div class="pedido-productos">
+                <img src="img/img-producto/Product-KEFIR.png" alt="Kéfir" />
+                <img src="img/img-producto/Product-COLAGENO.png" alt="Colágeno" />
+              </div>
+              <div class="pedido-detalles">
+                <p><strong>Productos:</strong> Kéfir x2, Colágeno x2</p>
+                <p><strong>Total:</strong> $40,000</p>
+              </div>
+              <div class="progreso-pedido">
+                <div class="progreso-barra" style="width: 33%"></div>
+              </div>
+              <p class="estado-texto">Tu pedido está siendo preparado</p>
+            </div>
+
+            <div class="pedido-card">
+              <div class="pedido-header">
+                <span class="estado-pedido enviado">Enviado</span>
+                <span class="fecha-pedido">Ayer, 3:15 PM</span>
+              </div>
+              <div class="pedido-productos">
+                <img src="img/img-producto/Product-KEFIR.png" alt="Kéfir" />
+                <img src="img/img-producto/Product-COLAGENO.png" alt="Colágeno" />
+              </div>
+              <div class="pedido-detalles">
+                <p><strong>Productos:</strong> Kéfir x2, Colágeno x2</p>
+                <p><strong>Total:</strong> $40,000</p>
+              </div>
+              <div class="progreso-pedido">
+                <div class="progreso-barra" style="width: 66%"></div>
+              </div>
+              <p class="estado-texto">Tu pedido está en camino</p>
+            </div>
+          </div>
+
+          <!-- Pedidos Finalizados -->
+          <div class="pedidos-finalizados">
+            <h3 class="seccion-titulo">
+              <i class="fas fa-check-circle"></i> Finalizados
+            </h3>
+
+            <div class="pedido-card">
+              <div class="pedido-header">
+                <span class="estado-pedido entregado">Entregado</span>
+                <span class="fecha-pedido">15 May, 2024</span>
+              </div>
+              <div class="pedido-productos">
+                <img src="img/img-producto/Product-KEFIR.png" alt="Kéfir" />
+                <img src="img/img-producto/Product-COLAGENO.png" alt="Colágeno" />
+              </div>
+              <div class="pedido-detalles">
+                <p><strong>Productos:</strong> Kéfir x2, Colágeno x2</p>
+                <p><strong>Total:</strong> $40,000</p>
+              </div>
+            </div>
+
+            <div class="pedido-card">
+              <div class="pedido-header">
+                <span class="estado-pedido finalizada">Finalizada</span>
+                <span class="fecha-pedido">2 May, 2024</span>
+              </div>
+              <div class="pedido-productos">
+                <img src="img/img-producto/Product-KEFIR.png" alt="Kéfir" />
+                <img src="img/img-producto/Product-COLAGENO.png" alt="Colágeno" />
+              </div>
+              <div class="pedido-detalles">
+                <p><strong>Productos:</strong> Kéfir x2, Colágeno Pet x2</p>
+                <p><strong>Total:</strong> $40,000</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Productos Favoritos -->
+        <div class="cont-favo perfil-card">
+          <div class="card-header">
+            <i class="fas fa-heart"></i>
+            <h2>Tus Favoritos</h2>
+          </div>
+          <p class="card-description">Productos que más te gustan</p>
+
+          <div class="favoritos-grid">
+            <div class="f-producto">
+              <div class="favorito-badge">corazon</div>
+              <img src="img/img-producto/Product-KEFIR.png" alt="Kéfir" />
+              <p class="favorito-nombre">Kéfir Natural</p>
+              <p class="favorito-precio">$10,000</p>
+              <a href="producto.html" class="favorito-link">Ver Producto</a>
+            </div>
+
+            <div class="f-producto">
+              <div class="favorito-badge">corazon</div>
+              <img src="img/img-producto/Product-COLAGENO.png" alt="Colágeno" />
+              <p class="favorito-nombre">Colágeno</p>
+              <p class="favorito-precio">$10,000</p>
+              <a href="producto.html" class="favorito-link">Ver Producto</a>
+            </div>
+
+            <div class="f-producto">
+              <div class="favorito-badge">corazon</div>
+              <img src="img/img-producto/Product-ColagenoPET.jpg" alt="Colágeno Pet" />
+              <p class="favorito-nombre">Colágeno Pet</p>
+              <p class="favorito-precio">$10,000</p>
+              <a href="producto.html" class="favorito-link">Ver Producto</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- PIE DE PÁGINA -->
+    <footer 
+      class="cabezadoSG">
+      <a href="inicio.html" class="arriba" aria-label="Volver arriba">
+        <i class="fa-solid fa-angles-up"></i>
+      </a>
+      <h1 id="vera2">VeraBioma</h1>
+      <div class="redes">
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+      
+    </footer>
+
+    <script src="script-PP.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verabioma</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        verabioma: '#40582E',
+                        'verabioma-claro': '#6F8B4A',
+                        beige: '#F4F1E7'
+                    },
+                    fontFamily: {
+                        serifVerabioma: ['Georgia', 'serif']
+                    }
+                }
+            }
+        };
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- NOTA: Bloqueo de avance en el historial cuando se está en el Login -->
+    <script>
+        if (localStorage.getItem('sesionIniciada') !== 'true') {
+            history.pushState(null, null, location.href);
+            window.onpopstate = function () {
+                history.go(1);
+            };
+        }
+    </script>
+</head>
+
+<body class="m-0 min-h-screen bg-beige font-sans text-[#222]">
+
+    <!-- ENCABEZADO -->
+    <header class="sticky top-0 z-40 mx-auto mt-3 w-[calc(100%-1.5rem)] max-w-screen-2xl rounded-2xl border border-white/20 bg-verabioma px-4 py-3 shadow-lg sm:mt-4 sm:w-[calc(100%-3rem)] sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between gap-4">
+            <a href="#inicio" onclick="mostrarPantalla('inicio')" class="flex min-w-0 items-center gap-3" aria-label="Verabioma, ir al inicio">
+                <img src="img/img-logo/logo.png" class="h-10 w-10 rounded-full bg-white object-contain p-1 sm:h-12 sm:w-12" alt="Logo Verabioma">
+                <span class="font-serifVerabioma text-2xl font-bold tracking-wide text-white sm:text-3xl">Verabioma</span>
+            </a>
+
+            <nav class="hidden items-center gap-8 lg:flex" aria-label="Navegación principal">
+                <a href="#inicio" onclick="mostrarPantalla('inicio')" class="text-sm font-medium text-white/90 transition hover:text-white">Inicio</a>
+                <a href="#productos" onclick="mostrarPantalla('inicio')" class="text-sm font-medium text-white/90 transition hover:text-white">Productos</a>
+                <a href="#esencia" onclick="mostrarPantalla('inicio')" class="text-sm font-medium text-white/90 transition hover:text-white">Nuestra esencia</a>
+            </nav>
+
+            <div class="flex shrink-0 items-center gap-2 sm:gap-3">
+                <button onclick="window.location.href='login.html'" class="hidden rounded-full border border-white/70 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 sm:inline-flex">Iniciar sesión</button>
+                <button onclick="window.location.href='register.html'" class="rounded-full bg-beige px-4 py-2.5 text-sm font-bold text-verabioma transition hover:bg-white sm:px-5">Crear cuenta</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- LANDING PAGE -->
+    <section id="inicio" class="pantalla flex w-full flex-col">
+        <main class="mx-auto w-full max-w-screen-2xl px-4 pb-16 pt-6 sm:px-8 sm:pt-10 lg:px-12 lg:pt-12">
+            <!-- HERO -->
+            <div class="grid items-center gap-8 overflow-hidden rounded-[2rem] bg-white p-5 shadow-sm sm:p-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 lg:p-12">
+                <div class="order-2 py-2 lg:order-1 lg:py-8">
+                    <span class="mb-5 inline-flex items-center gap-2 rounded-full bg-[#E8EDDF] px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-verabioma sm:text-sm">
+                        <span class="h-2 w-2 rounded-full bg-verabioma-claro"></span>
+                        Bienestar de forma natural
+                    </span>
+                    <h1 class="max-w-2xl font-serifVerabioma text-4xl font-bold leading-[1.08] text-verabioma sm:text-5xl lg:text-6xl xl:text-7xl">
+                        Pequeños hábitos, <span class="text-verabioma-claro">bienestar natural.</span>
+                    </h1>
+                    <p class="mt-6 max-w-xl text-base leading-7 text-[#5B6055] sm:text-lg sm:leading-8">
+                        Conoce Verabioma: productos elaborados para acompañar tu día a día y el cuidado de quienes más quieres, incluida tu mascota.
+                    </p>
+                    <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                        <a href="#productos" class="inline-flex min-h-12 items-center justify-center rounded-full bg-verabioma px-7 py-3 text-center font-semibold text-white transition hover:bg-verabioma-claro">
+                            Explorar productos <i class="fa-solid fa-arrow-right ml-3" aria-hidden="true"></i>
+                        </a>
+                        <button onclick="window.location.href='register.html'" class="inline-flex min-h-12 items-center justify-center rounded-full border border-verabioma/25 px-7 py-3 font-semibold text-verabioma transition hover:bg-[#F0F2E9]">
+                            Crear mi cuenta
+                        </button>
+                    </div>
+                    <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-[#E9E9E1] pt-6 text-sm text-[#60665B]">
+                        <span class="inline-flex items-center gap-2"><i class="fa-solid fa-leaf text-verabioma-claro" aria-hidden="true"></i> Productos naturales</span>
+                        <span class="inline-flex items-center gap-2"><i class="fa-solid fa-paw text-verabioma-claro" aria-hidden="true"></i> Opciones para mascotas</span>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <div class="relative overflow-hidden rounded-[1.5rem] bg-[#E8EDDF]">
+                        <img src="img/img-logo/banner.jpeg" class="h-[260px] w-full object-cover sm:h-[380px] lg:h-[500px]" alt="Productos Verabioma junto a una mascota" fetchpriority="high">
+                        <div class="absolute bottom-4 left-4 right-4 rounded-2xl bg-white/90 p-4 shadow-lg backdrop-blur-sm sm:bottom-6 sm:left-6 sm:right-6 sm:p-5">
+                            <p class="text-xs font-bold uppercase tracking-[0.16em] text-verabioma-claro">Conoce nuestra línea</p>
+                            <p class="mt-1 font-serifVerabioma text-xl font-bold text-verabioma sm:text-2xl">Bienestar para ti y para ellos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCTOS -->
+            <section id="productos" class="scroll-mt-28 pt-16 flex flex-col sm:pt-20 lg:pt-24">
+                <div class="mb-8 flex flex-col gap-4 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
+                    <div class="max-w-2xl">
+                        <p class="text-sm font-bold uppercase tracking-[0.2em] text-verabioma-claro">Nuestra selección</p>
+                        <h2 class="mt-3 font-serifVerabioma text-3xl font-bold text-verabioma sm:text-4xl lg:text-5xl">Tres formas de cuidarte</h2>
+                        <p class="mt-3 max-w-xl text-base leading-7 text-[#5B6055] sm:text-lg">Explora las tres opciones de Verabioma y encuentra la que se adapta a ti y a tu familia.</p>
+                    </div>
+                    <span class="inline-flex w-fit items-center rounded-full border border-verabioma/15 bg-white px-4 py-2 text-sm font-medium text-verabioma">3 productos destacados</span>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3 xl:gap-7">
+                    <article class="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-[#E7E6DC] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                        <div class="overflow-hidden bg-[#F1F0E8] p-3">
+                            <img src="img/img-producto/Product-KEFIR.png" alt="Producto Kéfir Verabioma" loading="lazy" class="h-64 w-full rounded-[1.1rem] object-cover transition duration-500 group-hover:scale-[1.02] sm:h-72">
+                        </div>
+                        <div class="flex flex-1 flex-col p-6 sm:p-7">
+                            <span class="w-fit rounded-full bg-[#E8EDDF] px-3 py-1 text-xs font-bold uppercase tracking-wider text-verabioma">Fermentado</span>
+                            <h3 class="mt-4 font-serifVerabioma text-2xl font-bold text-verabioma">Kéfir casero</h3>
+                            <p class="mt-3 flex-1 text-base leading-7 text-[#62665D]">Una opción fermentada para sumar variedad a tus hábitos cotidianos.</p>
+                            <button onclick="window.location.href='register.html'" class="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-verabioma px-5 py-3 font-semibold text-white transition hover:bg-verabioma-claro">Me interesa <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+                        </div>
+                    </article>
+
+                    <article class="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-[#E7E6DC] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                        <div class="overflow-hidden bg-[#F1F0E8] p-3">
+                            <img src="img/img-producto/Product-COLAGENO.png" alt="Producto de colágeno Verabioma" loading="lazy" class="h-64 w-full rounded-[1.1rem] object-cover transition duration-500 group-hover:scale-[1.02] sm:h-72">
+                        </div>
+                        <div class="flex flex-1 flex-col p-6 sm:p-7">
+                            <span class="w-fit rounded-full bg-[#E8EDDF] px-3 py-1 text-xs font-bold uppercase tracking-wider text-verabioma">Cuidado personal</span>
+                            <h3 class="mt-4 font-serifVerabioma text-2xl font-bold text-verabioma">Colágeno</h3>
+                            <p class="mt-3 flex-1 text-base leading-7 text-[#62665D]">Conoce nuestra opción de colágeno y consulta los detalles del producto.</p>
+                            <button onclick="window.location.href='register.html'" class="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-verabioma px-5 py-3 font-semibold text-white transition hover:bg-verabioma-claro">Me interesa <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+                        </div>
+                    </article>
+
+                    <article class="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-[#E7E6DC] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl md:col-span-2 xl:col-span-1">
+                        <div class="overflow-hidden bg-[#F1F0E8] p-3">
+                            <img src="img/img-producto/Product-ColagenoPET.jpg" alt="Producto de colágeno para mascotas Verabioma" loading="lazy" class="h-64 w-full rounded-[1.1rem] object-cover transition duration-500 group-hover:scale-[1.02] sm:h-72">
+                        </div>
+                        <div class="flex flex-1 flex-col p-6 sm:p-7">
+                            <span class="w-fit rounded-full bg-[#E8EDDF] px-3 py-1 text-xs font-bold uppercase tracking-wider text-verabioma">Para mascotas</span>
+                            <h3 class="mt-4 font-serifVerabioma text-2xl font-bold text-verabioma">Colágeno para mascotas</h3>
+                            <p class="mt-3 flex-1 text-base leading-7 text-[#62665D]">Una opción pensada para incluir a los compañeros peludos en el cuidado diario.</p>
+                            <button onclick="window.location.href='register.html'" class="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-verabioma px-5 py-3 font-semibold text-white transition hover:bg-verabioma-claro">Me interesa <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+                        </div>
+                    </article>
+                </div>
+                
+            </section>
+
+            <!-- ESENCIA DE LA MARCA -->
+            <section id="esencia" class="scroll-mt-28 pb-4 pt-16 sm:pt-20 lg:pt-24">
+                <div class="grid items-center gap-7 rounded-[2rem] bg-verabioma p-7 text-white sm:p-10 lg:grid-cols-[1fr_auto] lg:gap-12 lg:p-14">
+                    <div class="max-w-3xl">
+                        <p class="text-sm font-bold uppercase tracking-[0.2em] text-[#D7E2C9]">Nuestra esencia</p>
+                        <h2 class="mt-3 font-serifVerabioma text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">Lo natural también se comparte.</h2>
+                        <p class="mt-4 max-w-2xl text-base leading-7 text-white/85 sm:text-lg sm:leading-8">En Verabioma reunimos opciones para las personas y para sus mascotas. Explora nuestros productos y crea una cuenta para continuar tu experiencia.</p>
+                    </div>
+                    <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+                        <button onclick="window.location.href='register.html'" class="min-h-12 rounded-full bg-beige px-7 py-3 font-bold text-verabioma transition hover:bg-white">Crear cuenta</button>
+                        <button onclick="window.location.href='login.html'" class="min-h-12 rounded-full border border-white/60 px-7 py-3 font-semibold text-white transition hover:bg-white/10">Ya tengo cuenta</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </section>
+
+    <!-- LOGIN -->
+    <section id="login" class="pantalla hidden min-h-[calc(100vh-150px)] items-center justify-center px-4 py-6 sm:px-5 sm:py-10">
+        <div class="w-full max-w-[500px] rounded-[14px] bg-white p-[25px] shadow-[0_8px_30px_rgba(0,0,0,0.15)] sm:rounded-[18px] sm:p-10">
+            <div class="text-center">
+                <img src="img/img-logo/logo.png" class="mx-auto mb-5 w-[70px] sm:w-[95px]" alt="Logo Verabioma">
+                <h2 class="mb-5 text-[30px] font-bold text-verabioma sm:text-[45px]">ACCEDER</h2>
+            </div>
+
+            <input type="email" id="correo" placeholder="Correo electrónico"
+                class="mt-[18px] h-12 w-full rounded-lg border border-[#CCC] px-[15px] text-base outline-none transition focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[50px] sm:text-[17px]">
+
+            <input type="password" id="password" placeholder="Contraseña"
+                class="mt-[18px] h-12 w-full rounded-lg border border-[#CCC] px-[15px] text-base outline-none transition focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[50px] sm:text-[17px]">
+
+            <a onclick="mostrarPantalla('recuperar')" class="mt-4 block cursor-pointer text-sm text-verabioma underline hover:text-verabioma-claro">
+                ¿Olvidaste tu contraseña?
+            </a>
+
+            <button class="mt-5 flex h-12 w-full cursor-pointer items-center justify-center gap-3 rounded-lg border border-[#dadce0] bg-white text-base font-medium text-[#444] transition hover:border-[#c6c6c6] hover:bg-[#f8f9fa] sm:h-[50px]"
+                onclick="mostrarPantalla('google')">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" class="h-[22px] w-[22px]" alt="Google">
+                Continuar con Google
+            </button>
+
+            <button onclick="iniciarSesion()"
+                class="mt-5 h-12 w-full rounded-lg bg-verabioma text-base text-white transition hover:bg-[#58743E] sm:h-[50px] sm:text-lg">
+                Iniciar Sesión
+            </button>
+
+            <p class="mt-5 text-center text-base leading-7 text-[#555]">
+                ¿No tienes cuenta?
+                <span onclick="window.location.href='register.html'" class="cursor-pointer font-semibold text-verabioma hover:underline">
+                    Crear cuenta
+                </span>
+            </p>
+        </div>
+    </section>
+
+    <!-- REGISTRO -->
+    <section id="registro" class="pantalla hidden min-h-[calc(100vh-150px)] items-center justify-center px-4 py-6 sm:px-5 sm:py-10">
+        <div class="w-full max-w-[500px] rounded-[14px] bg-white p-[25px] shadow-[0_8px_30px_rgba(0,0,0,0.15)] sm:rounded-[18px] sm:p-10">
+            <div class="text-center">
+                <img src="img/img-logo/logo.png" class="mx-auto mb-5 w-[70px] sm:w-[95px]" alt="Logo Verabioma">
+                <h2 class="mb-5 text-[30px] font-bold text-verabioma sm:text-[45px]">CREAR CUENTA</h2>
+            </div>
+
+            <input type="text" id="nombreRegistro" placeholder="Nombre"
+                class="mt-[18px] h-12 w-full rounded-lg border border-[#CCC] px-[15px] text-base outline-none focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[50px] sm:text-[17px]">
+            <input type="text" id="apellidoRegistro" placeholder="Apellido"
+                class="mt-[18px] h-12 w-full rounded-lg border border-[#CCC] px-[15px] text-base outline-none focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[50px] sm:text-[17px]">
+            <input type="email" id="correoRegistro" placeholder="Correo"
+                class="mt-[18px] h-12 w-full rounded-lg border border-[#CCC] px-[15px] text-base outline-none focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[50px] sm:text-[17px]">
+            <input type="text" id="direccionRegistro" placeholder="Direccion"
+                class="mt-[18px] h-12 w-full rounded-lg border border-[#CCC] px-[15px] text-base outline-none focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[50px] sm:text-[17px]">
+            <input type="number" id="telefonoRegistro" placeholder="Telefono"
+                class="mt-[18px] h-12 w-full rounded-lg border border-[#CCC] px-[15px] text-base outline-none focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[50px] sm:text-[17px]">
+            <input type="password" id="passwordRegistro" placeholder="Contraseña"
+                class="mt-[18px] h-12 w-full rounded-lg border border-[#CCC] px-[15px] text-base outline-none focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[50px] sm:text-[17px]">
+            <input type="password" id="confirmarRegistro" placeholder="Confirmar contraseña"
+                class="mt-[18px] h-12 w-full rounded-lg border border-[#CCC] px-[15px] text-base outline-none focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[50px] sm:text-[17px]">
+
+            <button onclick="registrarUsuario()"
+                class="mt-6 h-12 w-full rounded-lg bg-verabioma text-base text-white transition hover:bg-[#58743E] sm:h-[50px] sm:text-lg">
+                Registrarse
+            </button>
+
+            <p class="mt-5 text-center text-base leading-7 text-[#555]">
+                ¿Ya tienes cuenta?
+                <span onclick="window.location.href='login.html'" class="cursor-pointer font-semibold text-verabioma hover:underline">
+                    Iniciar sesión
+                </span>
+            </p>
+        </div>
+    </section>
+
+    <!-- RECUPERAR -->
+    <section id="recuperar" class="pantalla hidden min-h-[calc(100vh-150px)] items-center justify-center px-4 py-6 sm:px-5 sm:py-10">
+        <div class="w-full max-w-[500px] rounded-[14px] bg-white p-[25px] shadow-[0_8px_30px_rgba(0,0,0,0.15)] sm:rounded-[18px] sm:p-10">
+            <h2 class="mb-5 text-[30px] font-bold text-verabioma sm:text-[45px]">RECUPERAR CONTRASEÑA</h2>
+            <p class="text-base leading-7 text-[#555] sm:text-[22px] sm:leading-[35px]">Ingresa tu correo.</p>
+
+            <input type="email" id="correoRecuperacion"
+                class="mt-[18px] h-12 w-full rounded-lg border border-[#CCC] px-[15px] text-base outline-none focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[50px] sm:text-[17px]">
+
+            <button onclick="enviarCodigo()"
+                class="mt-6 h-12 w-full rounded-lg bg-verabioma text-base text-white transition hover:bg-[#58743E] sm:h-[50px] sm:text-lg">
+                Enviar Código
+            </button>
+        </div>
+    </section>
+
+    <!-- VERIFICACION -->
+    <section id="verificacion" class="pantalla hidden min-h-[calc(100vh-150px)] items-center justify-center px-4 py-6 sm:px-5 sm:py-10">
+        <div class="w-full max-w-[500px] rounded-[14px] bg-white p-[25px] shadow-[0_8px_30px_rgba(0,0,0,0.15)] sm:rounded-[18px] sm:p-10">
+            <h2 class="mb-5 text-[30px] font-bold text-verabioma sm:text-[45px]">VERIFICACIÓN</h2>
+            <p class="text-base leading-7 text-[#555] sm:text-[22px] sm:leading-[35px]">Ingresa el código.</p>
+
+            <div class="codigo my-7 flex justify-center gap-1 sm:gap-3">
+                <input maxlength="1" id="c1" class="h-[50px] w-[42px] rounded-lg border border-[#CCC] text-center text-[21px] outline-none focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[60px] sm:w-[55px] sm:text-[26px]">
+                <input maxlength="1" id="c2" class="h-[50px] w-[42px] rounded-lg border border-[#CCC] text-center text-[21px] outline-none focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[60px] sm:w-[55px] sm:text-[26px]">
+                <input maxlength="1" id="c3" class="h-[50px] w-[42px] rounded-lg border border-[#CCC] text-center text-[21px] outline-none focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[60px] sm:w-[55px] sm:text-[26px]">
+                <input maxlength="1" id="c4" class="h-[50px] w-[42px] rounded-lg border border-[#CCC] text-center text-[21px] outline-none focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[60px] sm:w-[55px] sm:text-[26px]">
+                <input maxlength="1" id="c5" class="h-[50px] w-[42px] rounded-lg border border-[#CCC] text-center text-[21px] outline-none focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[60px] sm:w-[55px] sm:text-[26px]">
+            </div>
+
+            <button onclick="verificarCodigo()"
+                class="h-12 w-full rounded-lg bg-verabioma text-base text-white transition hover:bg-[#58743E] sm:h-[50px] sm:text-lg">
+                Verificar
+            </button>
+        </div>
+    </section>
+
+    <!-- CAMBIAR CONTRASEÑA -->
+    <section id="nuevaPassword" class="pantalla hidden min-h-[calc(100vh-150px)] items-center justify-center px-4 py-6 sm:px-5 sm:py-10">
+        <div class="w-full max-w-[500px] rounded-[14px] bg-white p-[25px] shadow-[0_8px_30px_rgba(0,0,0,0.15)] sm:rounded-[18px] sm:p-10">
+            <h2 class="mb-5 text-[30px] font-bold text-verabioma sm:text-[45px]">CAMBIAR CONTRASEÑA</h2>
+
+            <input type="password" id="nueva" placeholder="Nueva contraseña"
+                class="mt-[18px] h-12 w-full rounded-lg border border-[#CCC] px-[15px] text-base outline-none focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[50px] sm:text-[17px]">
+            <input type="password" id="confirmar" placeholder="Confirmar contraseña"
+                class="mt-[18px] h-12 w-full rounded-lg border border-[#CCC] px-[15px] text-base outline-none focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[50px] sm:text-[17px]">
+
+            <button onclick="guardarPassword()"
+                class="mt-6 h-12 w-full rounded-lg bg-verabioma text-base text-white transition hover:bg-[#58743E] sm:h-[50px] sm:text-lg">
+                Guardar
+            </button>
+        </div>
+    </section>
+
+    <!-- BIENVENIDA -->
+    <section id="bienvenida" class="pantalla hidden min-h-[calc(100vh-150px)] items-center justify-center px-4 py-6 text-center sm:px-5 sm:py-10">
+        <div class="mx-auto w-[95%] max-w-[1200px] p-2 text-center sm:p-10">
+            <h2 class="mt-14 mb-5 text-[40px] font-bold text-verabioma sm:mt-[100px] sm:text-[55px]">¡BIENVENIDO!</h2>
+
+            <p id="mensajeBienvenida" class="text-base leading-7 text-[#555] sm:text-[22px] sm:leading-[35px]">
+                Has iniciado sesión correctamente.
+            </p>
+
+            <button onclick="entrarAlSistema()"
+                class="mt-8 h-12 w-full max-w-[230px] rounded-lg bg-verabioma text-base text-white transition hover:bg-[#58743E] sm:h-[58px] sm:text-lg">
+                Entrar al sistema
+            </button>
+        </div>
+    </section>
+
+    <!-- GOOGLE -->
+    <section id="google" class="pantalla hidden min-h-[calc(100vh-150px)] items-center justify-center px-4 py-6 sm:px-5 sm:py-10">
+        <div class="flex w-full items-center justify-center px-1 py-5 sm:px-5 sm:py-[60px]">
+            <div class="w-full max-w-[420px] rounded-xl bg-white p-[22px] shadow-[0_5px_20px_rgba(0,0,0,0.15)] sm:p-[35px]">
+                <div class="mb-6 text-center">
+                    <img src="img/img-logo/google.png" class="mx-auto mb-[15px] w-[45px]" alt="Google">
+                    <h2 class="mb-2 text-[23px] font-semibold text-[#202124] sm:text-[30px]">Elegir una cuenta</h2>
+                    <p class="text-sm text-[#5f6368] sm:text-base">para continuar con Verabioma</p>
+                </div>
+
+                <div onclick="seleccionarCuenta('Juli Gómez','juli@gmail.com')"
+                    class="mb-3 flex cursor-pointer items-center gap-2.5 rounded-[10px] border border-[#e5e5e5] p-3 transition hover:bg-[#f1f3f4] sm:gap-[15px] sm:p-[15px]">
+                    <img src="img/img-logo/usuario.png" class="h-[42px] w-[42px] rounded-full sm:h-12 sm:w-12" alt="Usuario">
+                    <div>
+                        <h3 class="text-base text-[#202124] sm:text-lg">Juli Gómez</h3>
+                        <span class="text-[13px] text-[#5f6368] sm:text-[15px]">juli@gmail.com</span>
+                    </div>
+                </div>
+
+                <div onclick="seleccionarCuenta('Juan Pérez','juan@gmail.com')"
+                    class="mb-3 flex cursor-pointer items-center gap-2.5 rounded-[10px] border border-[#e5e5e5] p-3 transition hover:bg-[#f1f3f4] sm:gap-[15px] sm:p-[15px]">
+                    <img src="img/img-logo/usuario.png" class="h-[42px] w-[42px] rounded-full sm:h-12 sm:w-12" alt="Usuario">
+                    <div>
+                        <h3 class="text-base text-[#202124] sm:text-lg">Juan Pérez</h3>
+                        <span class="text-[13px] text-[#5f6368] sm:text-[15px]">juan@gmail.com</span>
+                    </div>
+                </div>
+
+                <div onclick="mostrarPantalla('otraCuenta')"
+                    class="mb-0 flex cursor-pointer items-center gap-3 rounded-[10px] border border-[#e5e5e5] p-3 text-[#4285F4] transition hover:bg-[#f1f3f4] sm:p-[15px]">
+                    <i class="fa-solid fa-user-plus text-[20px]"></i>
+                    <span class="text-sm sm:text-base">Usar otra cuenta</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OTRA CUENTA -->
+    <section id="otraCuenta" class="pantalla hidden min-h-[calc(100vh-150px)] items-center justify-center px-4 py-6 sm:px-5 sm:py-10">
+        <div class="w-full max-w-[500px] rounded-[14px] bg-white p-[25px] shadow-[0_8px_30px_rgba(0,0,0,0.15)] sm:rounded-[18px] sm:p-10">
+            <h2 class="mb-5 text-[30px] font-bold text-verabioma sm:text-[45px]">Iniciar sesión</h2>
+
+            <input id="correoGoogle" type="email" placeholder="Correo electrónico"
+                class="mt-[18px] h-12 w-full rounded-lg border border-[#CCC] px-[15px] text-base outline-none focus:border-verabioma focus:ring-2 focus:ring-[#6F8B4A]/30 sm:h-[50px] sm:text-[17px]">
+
+            <button onclick="usarOtraCuenta()"
+                class="mt-6 h-12 w-full rounded-lg bg-verabioma text-base text-white transition hover:bg-[#58743E] sm:h-[50px] sm:text-lg">
+                Siguiente
+            </button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="mx-auto mt-4 flex min-h-[100px] w-[calc(100%-1.5rem)] max-w-screen-2xl flex-wrap items-center justify-center gap-4 rounded-t-2xl border border-[#E2E3D8] bg-white px-5 py-6 sm:w-[calc(100%-3rem)] sm:justify-between sm:px-8">
+        <div class="font-serifVerabioma text-xl text-verabioma sm:text-2xl">
+            Verabioma
+        </div>
+
+        <div class="flex items-center">
+            <i class="fa-brands fa-facebook mx-2 text-lg text-verabioma sm:text-xl"></i>
+            <i class="fa-brands fa-instagram mx-2 text-lg text-verabioma sm:text-xl"></i>
+            <i class="fa-brands fa-whatsapp mx-2 text-lg text-verabioma sm:text-xl"></i>
+            <i class="fa-brands fa-youtube mx-2 text-lg text-verabioma sm:text-xl"></i>
+        </div>
+
+        <!-- Sección Developers -->
+        <div class="flex flex-col gap-4 border-t border-[#E9E9E1] pt-6 lg:border-t-0 lg:pt-0">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-verabioma-claro">- DEVELOPERS -</span>
+            <div class="flex flex-wrap gap-6 sm:gap-10">
+
+                <!-- Desarrollador 1 -->
+                <div class="flex flex-col gap-1">
+                        <span class="font-bold text-verabioma">JCGuerreroM</span>
+                        <a href="https://github.com/JCGuerreroM" target="_blank" class="inline-flex items-center gap-2 text-sm text-[#5B6055] transition hover:text-verabioma">
+                            <i class="fa-brands fa-github text-base"></i> GitHub</a>
+                    </div>
+                    <!-- Desarrollador 2 -->
+                    <div class="flex flex-col gap-1">
+                        <span class="font-bold text-verabioma">SaraGuzman-cloud</span>
+                        <a href="https://github.com/SaraGuzman-cloud" target="_blank" class="inline-flex items-center gap-2 text-sm text-[#5B6055] transition hover:text-verabioma">
+                            <i class="fa-brands fa-github text-base"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </footer>
+
+    <script src="script-PP.js"></script>
+
+    <script>
+        function entrarAlSistema() {
+            window.location.href = 'HTML/inicio.html';
+        }
+
+        function seleccionarCuenta(nombre, correo) {
+            localStorage.setItem('sesionIniciada', 'true');
+            localStorage.setItem('usuarioActivo', correo);
+            localStorage.setItem('nombreGoogle', nombre);
+            localStorage.setItem('correoGoogle', correo);
+
+            const msj = document.getElementById('mensajeBienvenida');
+            if (msj) msj.innerText = `¡Hola ${nombre}! Has iniciado sesión correctamente.`;
+            mostrarPantalla('bienvenida');
+        }
+    </script>
+
+</body>
+</html>

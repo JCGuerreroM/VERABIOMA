@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VeraBioma - Bienestar Natural</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        verabioma: '#40582E',
+                        'verabioma-claro': '#6F8B4A',
+                        beige: '#F4F1E7'
+                    },
+                    fontFamily: {
+                        serifVerabioma: ['Georgia', 'serif']
+                    }
+                }
+            }
+        };
+    </script>
+  </head>
+
+  <body>
+    <!-- ENCABEZADO PRINCIPAL -->
+    <header 
+      class="container-header">
+      <div class="logos">
+        <img
+          id="imgVerabioma"
+          src="img/img-logo/logo_verabioma.png"
+          alt="Logo de VeraBioma"
+        />
+        <h1 class="vera1">VeraBioma</h1>
+      </div>
+      <nav id="nav">
+        <ul>
+          <li><a href="inicio.html">Inicio</a></li>
+          <li><a href="producto.html">Producto</a></li>
+          <li><a href="perfil.html">Perfil</a></li>
+          <li><a href="carrito.html">Carrito</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Reseñas opinion -->
+    <section 
+      class="container-resenas" id="producto-resenas">
+      <h1 class="REH">Reseñas Productos</h1>
+      <p class="REP">
+        Tu opinión nos importa. Comparte tu experiencia con nuestra comunidad.
+      </p>
+
+      <div class="container-resena">
+        <div class="section-select">
+          <p class="titulo-paso">1. Selecciona el Producto</p>
+          <div id="select-prod">
+            <div class="card-prod" data-producto="Kéfir Artesanal Natural">
+              <div class="img-box">
+                <img
+                  src="img/img-producto/Producto-KEFIR-SNF.jpeg"
+                  alt="Kéfir Artesanal Natural"
+                />
+              </div>
+              <p class="prod-title">Kéfir Artesanal Natural</p>
+            </div>
+
+            <div class="card-prod" data-producto="Colágeno Pureza Natural">
+              <div class="img-box">
+                <img
+                  src="img/img-producto/Product-COLAGENO-SNF.jpeg"
+                  alt="Colágeno Pureza Natural"
+                />
+              </div>
+              <p class="prod-title">Colágeno Pureza Natural</p>
+            </div>
+
+            <div
+              class="card-prod"
+              data-producto="Colágeno Vitalidad Peluda (Pet)"
+            >
+              <div class="img-box">
+                <img
+                  src="img/img-producto/Product-ColagenoPET-SNF.jpg.jpeg"
+                  alt="Colágeno Vitalidad Peluda (Pet)"
+                />
+              </div>
+              <p class="prod-title">Colágeno Vitalidad Peluda (Pet)</p>
+            </div>
+          </div>
+
+          <p class="titulo-paso">2. Califica tu satisfacción</p>
+          <div class="estrellas" id="rating-estrellas">
+            <span class="estrella" data-value="1">&#9733;</span>
+            <span class="estrella" data-value="2">&#9733;</span>
+            <span class="estrella" data-value="3">&#9733;</span>
+            <span class="estrella" data-value="4">&#9733;</span>
+            <span class="estrella" data-value="5">&#9733;</span>
+          </div>
+        </div>
+
+        <div id="separador"></div>
+
+        <div class="section-text">
+          <label for="resena-text">3. Tu Opinión</label>
+          <textarea
+            id="resena-text"
+            placeholder="Cuéntanos qué producto usaste y cómo te has sentido. (Máximo 100 palabras)"
+          ></textarea>
+        </div>
+
+        <div class="section-buttons">
+          <button type="button" class="btn-cancelar" id="btn-cancelar">
+            Cancelar
+          </button>
+          <button type="button" class="btn-enviar" id="btn-enviar">
+            ENVIAR MI RESEÑA
+          </button>
+        </div>
+      </div>
+    </section>
+
+        <!-- PIE DE PÁGINA -->
+    <footer 
+      class="cabezadoSG">
+      <a href="inicio.html" class="arriba" aria-label="Volver arriba">
+        <i class="fa-solid fa-angles-up"></i>
+      </a>
+      <h1 id="vera2">VeraBioma</h1>
+      <div class="redes">
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+      
+    </footer>
+
+    <script src="script-PP.js"></script>
+  </body>
+</html>
+
+<!--
+    ==========================================
+                    NOTAS
+    ========================================== 
+   
+    1. Cuando vamos agregar una secion importante poner como titulo de nota: (tipo nota y asi saber para que sirve es parte)
+    Ejemplo:
+           < !-- HEADER / ENCABEZADO FIJO -- >
+    2. Siempre poner una nota si se cambia un codigo del original.  
+-->

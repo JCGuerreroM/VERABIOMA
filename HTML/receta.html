@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VeraBioma - Bienestar Natural</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        verabioma: '#40582E',
+                        'verabioma-claro': '#6F8B4A',
+                        beige: '#F4F1E7'
+                    },
+                    fontFamily: {
+                        serifVerabioma: ['Georgia', 'serif']
+                    }
+                }
+            }
+        };
+    </script>
+  </head>
+
+  <body>
+    <!-- ENCABEZADO PRINCIPAL -->
+    <header 
+      class="container-header">
+      <div class="logos">
+        <img
+          id="imgVerabioma"
+          src="img/img-logo/logo_verabioma.png"
+          alt="Logo de VeraBioma"
+        />
+        <h1 class="vera1">VeraBioma</h1>
+      </div>
+      <nav id="nav">
+        <ul>
+          <li><a href="inicio.html">Inicio</a></li>
+          <li><a href="producto.html">Producto</a></li>
+          <li><a href="perfil.html">Perfil</a></li>
+          <li><a href="carrito.html">Carrito</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!--Recetas-->
+    <section  
+      id="container-receta">
+      <div class="container">
+        <h1 class="rece">RECETAS</h1>
+        <p class="subtitle">Ideas de recetas para tus compras</p>
+
+        <!-- Tabs de navegación -->
+        <div class="tabs">
+          <button class="tab-button active" onclick="showRecipes('bebidas')">
+            Bebidas
+          </button>
+          <button class="tab-button" onclick="showRecipes('comidas')">
+            Comidas
+          </button>
+          <button class="tab-button" onclick="showRecipes('postres')">
+            Postres
+          </button>
+        </div>
+
+        <!-- Contenedor de Bebidas -->
+        <div id="bebidas" class="recipes-container active">
+          <!-- Receta 1 -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Kéfir</span>
+              <h2>Smoothie Energético de Kéfir</h2>
+              <p class="recipe-description">
+                Delicioso smoothie cremoso para empezar el día con energía
+              </p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/smoothie-kefir.jpg"
+                  alt="Smoothie Energético de Kéfir"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>1 taza de kéfir natural</li>
+                    <li>1 plátano maduro</li>
+                    <li>1 cucharada de miel</li>
+                    <li>½ taza de fresas congeladas</li>
+                    <li>Semillas de chía al gusto</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Mezclar todos los ingredientes en una licuadora hasta
+                    obtener una consistencia suave. Servir inmediatamente y
+                    disfrutar.
+                  </p>
+                  <div class="recipe-image">
+                    <img
+                      src="img/img-receta/smoothie-kefir-resultado.jpg"
+                      alt="Resultado del Smoothie"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Receta 2 -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Colágeno</span>
+              <h2>Batido de Colágeno Tropical</h2>
+              <p class="recipe-description">
+                Refrescante batido con un toque exótico y nutritivo
+              </p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/batido-colageno.jpg"
+                  alt="Batido de Colágeno Tropical"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>1 scoop de colágeno en polvo</li>
+                    <li>Jugo de 2 naranjas</li>
+                    <li>½ taza de mango picado</li>
+                    <li>Hielo al gusto</li>
+                    <li>Hojas de menta para decorar</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Licuar el mango con el jugo de naranja y el colágeno.
+                    Agregar hielo y seguir licuando hasta que esté bien frío.
+                    Decorar con menta.
+                  </p>
+                  <div class="recipe-image">
+                    <img
+                      src="img/img-receta/batido-colageno-resultado.jpg"
+                      alt="Resultado del Batido Tropical"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Receta 3 -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Kéfir</span>
+              <h2>Kéfir de Fresa y Vainilla</h2>
+              <p class="recipe-description">
+                Bebida probiótica dulce y saludable
+              </p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/kefir-fresa-vainilla.jpg"
+                  alt="Kéfir de Fresa y Vainilla"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>1 taza de kéfir</li>
+                    <li>½ taza de fresas</li>
+                    <li>1 cucharadita de extracto de vainilla</li>
+                    <li>Miel al gusto</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Licuar todos los ingredientes y servir bien frío. Perfecto
+                    para el desayuno o merienda.
+                  </p>
+                  <div class="recipe-image">
+                    <img src="img/img-receta/o.jpg" alt="Resultado" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Receta 4 -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Colágeno</span>
+              <h2>Limonada de Colágeno</h2>
+              <p class="recipe-description">
+                Refrescante limonada con beneficios para tu piel
+              </p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/limonada-colageno.jpg"
+                  alt="Limonada de Colágeno"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>1 scoop de colágeno sin sabor</li>
+                    <li>Jugo de 3 limones</li>
+                    <li>Agua mineral</li>
+                    <li>Stevia o azúcar al gusto</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Mezclar el colágeno con un poco de agua tibia hasta
+                    disolver. Agregar el jugo de limón y completar con agua
+                    mineral fría.
+                  </p>
+                  <div class="recipe-image">
+                    <img src="img/img-receta/o.jpg" alt="Resultado" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Receta 5 -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Kéfir</span>
+              <h2>Latte Dorado de Kéfir</h2>
+              <p class="recipe-description">
+                Bebida caliente con cúrcuma y especias
+              </p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/latte-kefir.jpg"
+                  alt="Latte Dorado de Kéfir"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>1 taza de kéfir</li>
+                    <li>1 cucharadita de cúrcuma</li>
+                    <li>½ cucharadita de canela</li>
+                    <li>Miel al gusto</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Calentar el kéfir a fuego bajo sin hervir. Agregar las
+                    especias y la miel. Revolver bien y servir caliente.
+                  </p>
+                  <div class="recipe-image">
+                    <img src="img/img-receta/o.jpg" alt="Resultado" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Receta 6 -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Colágeno</span>
+              <h2>Café con Colágeno</h2>
+              <p class="recipe-description">
+                Café matutino enriquecido con colágeno
+              </p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/cafe-colageno.jpg"
+                  alt="Café con Colágeno"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>1 taza de café caliente</li>
+                    <li>1 scoop de colágeno</li>
+                    <li>Leche o crema al gusto</li>
+                    <li>Canela para espolvorear</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Agregar el colágeno al café caliente y mezclar bien. Añadir
+                    leche o crema y espolvorear con canela.
+                  </p>
+                  <div class="recipe-image">
+                    <img src="img/img-receta/o.jpg" alt="Resultado" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Contenedor de Comidas -->
+        <div id="comidas" class="recipes-container">
+          <!-- Receta 1 - Comidas -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Kéfir</span>
+              <h2>Ensalada de Pollo con Kéfir</h2>
+              <p class="recipe-description">
+                Ensalada cremosa y saludable con aderezo de kéfir
+              </p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/ensalada-pollo-kefir.jpg"
+                  alt="Ensalada de Pollo con Kéfir"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>2 pechugas de pollo</li>
+                    <li>½ taza de kéfir</li>
+                    <li>Mezcla de lechugas</li>
+                    <li>Tomates cherry</li>
+                    <li>Aceite de oliva y especias</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Cocinar el pollo y cortar en tiras. Mezclar el kéfir con
+                    aceite y especias para el aderezo. Combinar con las verduras
+                    y el pollo.
+                  </p>
+                  <div class="recipe-image">
+                    <img src="img/img-receta/o.jpg" alt="Resultado" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Receta 2 - Comidas -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Colágeno</span>
+              <h2>Sopa de Verduras con Colágeno</h2>
+              <p class="recipe-description">Sopa nutritiva y reconfortante</p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/sopa-colageno.jpg"
+                  alt="Sopa de Verduras con Colágeno"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>Verduras variadas (zanahoria, apio, cebolla)</li>
+                    <li>1 scoop de colágeno</li>
+                    <li>Caldo de pollo o verduras</li>
+                    <li>Hierbas frescas</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Sofreír las verduras, agregar el caldo y cocinar hasta que
+                    estén tiernas. Agregar el colágeno y mezclar bien.
+                  </p>
+                  <div class="recipe-image">
+                    <img src="img/img-receta/o.jpg" alt="Resultado" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Receta 3 - Comidas -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Kéfir</span>
+              <h2>Wrap de Kéfir con Vegetales</h2>
+              <p class="recipe-description">Wrap fresco y saludable</p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/wrap-kefir.jpg"
+                  alt="Wrap de Kéfir con Vegetales"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>Tortillas de trigo</li>
+                    <li>Kéfir para untar</li>
+                    <li>Vegetales frescos</li>
+                    <li>Hummus o aguacate</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Untar las tortillas con kéfir y hummus. Agregar los
+                    vegetales y enrollar firmemente.
+                  </p>
+                  <div class="recipe-image">
+                    <img src="img/img-receta/o.jpg" alt="Resultado" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Receta 4 - Comidas -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Colágeno</span>
+              <h2>Bowl de Quinoa con Colágeno</h2>
+              <p class="recipe-description">Bowl nutritivo y completo</p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/bowl-quinoa-colageno.jpg"
+                  alt="Bowl de Quinoa con Colágeno"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>1 taza de quinoa</li>
+                    <li>Scoop de colágeno</li>
+                    <li>Vegetales asados</li>
+                    <li>Semillas de calabaza</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Cocinar la quinoa y mezclar con el colágeno. Agregar los
+                    vegetales asados y las semillas.
+                  </p>
+                  <div class="recipe-image">
+                    <img src="img/img-receta/o.jpg" alt="Resultado" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Receta 5 - Comidas -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Kéfir</span>
+              <h2>Tacos de Pescado con Kéfir</h2>
+              <p class="recipe-description">Tacos frescos con salsa de kéfir</p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/tacos-pescado-kefir.jpg"
+                  alt="Tacos de Pescado con Kéfir"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>Filetes de pescado</li>
+                    <li>Tortillas de maíz</li>
+                    <li>Kéfir para la salsa</li>
+                    <li>Repollo morado</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Cocinar el pescado. Preparar la salsa mezclando kéfir con
+                    especias. Armar los tacos con todos los ingredientes.
+                  </p>
+                  <div class="recipe-image">
+                    <img src="img/img-receta/o.jpg" alt="Resultado" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Receta 6 - Comidas -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Colágeno</span>
+              <h2>Hamburguesa de Pavo con Colágeno</h2>
+              <p class="recipe-description">Hamburguesa jugosa y saludable</p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/hamburguesa-pavo-colageno.jpg"
+                  alt="Hamburguesa de Pavo con Colágeno"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>Carne de pavo molida</li>
+                    <li>Scoop de colágeno</li>
+                    <li>Pan integral</li>
+                    <li>Vegetales para acompañar</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Mezclar la carne con el colágeno y condimentos. Formar las
+                    hamburguesas y cocinar. Armar con pan y vegetales.
+                  </p>
+                  <div class="recipe-image">
+                    <img src="img/img-receta/o.jpg" alt="Resultado" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Contenedor de Postres -->
+        <div id="postres" class="recipes-container">
+          <!-- Receta 1 - Postres -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Kéfir</span>
+              <h2>Helado de Kéfir y Frutos Rojos</h2>
+              <p class="recipe-description">Helado saludable y delicioso</p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/helado-kefir.jpg"
+                  alt="Helado de Kéfir y Frutos Rojos"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>2 tazas de kéfir</li>
+                    <li>Frutos rojos</li>
+                    <li>Miel o stevia</li>
+                    <li>Vainilla</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Mezclar todos los ingredientes y congelar. Batir cada hora
+                    hasta obtener consistencia cremosa.
+                  </p>
+                  <div class="recipe-image">
+                    <img src="img/img-receta/o.jpg" alt="Resultado" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Receta 2 - Postres -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Colágeno</span>
+              <h2>Pudín de Chía con Colágeno</h2>
+              <p class="recipe-description">
+                Postre saludable y fácil de preparar
+              </p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/pudin-chia-colageno.jpg"
+                  alt="Pudín de Chía con Colágeno"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>Semillas de chía</li>
+                    <li>Leche de almendras</li>
+                    <li>Scoop de colágeno</li>
+                    <li>Fruta fresca</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Mezclar las semillas con la leche y el colágeno. Refrigerar
+                    toda la noche y decorar con frutas.
+                  </p>
+                  <div class="recipe-image">
+                    <img src="img/img-receta/o.jpg" alt="Resultado" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Receta 3 - Postres -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Kéfir</span>
+              <h2>Mousse de Chocolate con Kéfir</h2>
+              <p class="recipe-description">Mousse cremosa y saludable</p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/mousse-chocolate-kefir.jpg"
+                  alt="Mousse de Chocolate con Kéfir"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>Chocolate negro</li>
+                    <li>Kéfir</li>
+                    <li>Miel</li>
+                    <li>Esencia de vainilla</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Derretir el chocolate y mezclar con el kéfir, la miel y la
+                    vainilla. Refrigerar hasta que tome consistencia.
+                  </p>
+                  <div class="recipe-image">
+                    <img src="img/img-receta/o.jpg" alt="Resultado" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Receta 4 - Postres -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Colágeno</span>
+              <h2>Galletas de Avena con Colágeno</h2>
+              <p class="recipe-description">
+                Galletas saludables para cualquier momento
+              </p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/galletas-avena-colageno.jpg"
+                  alt="Galletas de Avena con Colágeno"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>Avena</li>
+                    <li>Scoop de colágeno</li>
+                    <li>Plátano maduro</li>
+                    <li>Canela</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Machacar el plátano y mezclar con los demás ingredientes.
+                    Formar galletas y hornear a 180°C por 15 minutos.
+                  </p>
+                  <div class="recipe-image">
+                    <img src="img/img-receta/o.jpg" alt="Resultado" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Receta 5 - Postres -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Kéfir</span>
+              <h2>Cheesecake de Kéfir</h2>
+              <p class="recipe-description">Cheesecake ligero y saludable</p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/cheesecake-kefir.jpg"
+                  alt="Cheesecake de Kéfir"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>Kéfir espeso</li>
+                    <li>Galletas integrales</li>
+                    <li>Mantequilla</li>
+                    <li>Miel</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Triturar las galletas y mezclar con mantequilla para la
+                    base. Verter el kéfir endulzado y refrigerar.
+                  </p>
+                  <div class="recipe-image">
+                    <img src="img/img-receta/o.jpg" alt="Resultado" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Receta 6 - Postres -->
+          <article class="recipe-card">
+            <div class="card-header">
+              <span class="product-badge">Colágeno</span>
+              <h2>Trufas de Cacao y Colágeno</h2>
+              <p class="recipe-description">Trufas energéticas y deliciosas</p>
+              <div class="recipe-image">
+                <img
+                  src="img/img-receta/trufas-cacao-colageno.jpg"
+                  alt="Trufas de Cacao y Colágeno"
+                />
+              </div>
+              <button class="toggle-details" onclick="toggleDetails(this)">
+                Ver Detalles
+              </button>
+            </div>
+
+            <div class="recipe-details">
+              <div class="details-content">
+                <div class="ingredients-box">
+                  <h3>Ingredientes:</h3>
+                  <ul class="ingredients-list">
+                    <li>Dátiles</li>
+                    <li>Cacao en polvo</li>
+                    <li>Scoop de colágeno</li>
+                    <li>Almendras molidas</li>
+                  </ul>
+                </div>
+                <div class="steps-box">
+                  <h3>Preparación:</h3>
+                  <p>
+                    Procesar los dátiles con el cacao, colágeno y almendras.
+                    Formar bolitas y refrigerar.
+                  </p>
+                  <div class="recipe-image">
+                    <img src="img/img-receta/o.jpg" alt="Resultado" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+        <!-- PIE DE PÁGINA -->
+    <footer 
+      class="cabezadoSG">
+      <a href="inicio.html" class="arriba" aria-label="Volver arriba">
+        <i class="fa-solid fa-angles-up"></i>
+      </a>
+      <h1 id="vera2">VeraBioma</h1>
+      <div class="redes">
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </footer>
+
+    <script src="script-PP.js"></script>
+  </body>
+</html>
+
+<!--
+    ==========================================
+                    NOTAS
+    ========================================== 
+   
+    1. Cuando vamos agregar una secion importante poner como titulo de nota: (tipo nota y asi saber para que sirve es parte)
+    Ejemplo:
+           < !-- HEADER / ENCABEZADO FIJO -- >
+    2. Siempre poner una nota si se cambia un codigo del original.  
+-->

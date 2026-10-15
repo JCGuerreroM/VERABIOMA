@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión | Verabioma</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            verabioma: '#40582E',
+            'verabioma-claro': '#6F8B4A',
+            beige: '#F4F1E7'
+          }
+        }
+      }
+    };
+  </script>
+</head>
+
+<body class="min-h-screen bg-beige text-[#222]">
+  <main class="min-h-screen w-full flex items-center justify-center px-6 py-8">
+    </section>
+    <section class="mx-auto w-full max-w-lg rounded-[2rem] bg-white p-7 shadow-sm sm:p-10">
+      <h2 class="text-3xl font-bold text-verabioma">Iniciar sesión</h2>
+      <p class="mt-2 text-gray-600">Ingresa los datos de tu cuenta.</p>
+      <form class="mt-8 space-y-5" onsubmit="event.preventDefault(); iniciarSesionPagina();">
+        <div>
+          <label for="correo" class="mb-2 block text-sm font-semibold">Correo electrónico</label>
+          <input id="correo" name="correo" type="email" autocomplete="email" required
+            class="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-verabioma focus:ring-2 focus:ring-verabioma/20"
+            placeholder="tucorreo@ejemplo.com">
+        </div>
+        <div>
+          <label for="password" class="mb-2 block text-sm font-semibold">Contraseña</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required
+            class="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none focus:border-verabioma focus:ring-2 focus:ring-verabioma/20"
+            placeholder="Tu contraseña">
+        </div>
+        <div class="text-right"><a href="rvcPassword.html"
+            class="text-sm font-semibold text-verabioma underline">¿Olvidaste tu contraseña?</a></div>
+        <button type="submit"
+          class="w-full rounded-full bg-verabioma px-6 py-3 font-bold text-white transition hover:bg-verabioma-claro">Acceder</button>
+      </form>
+      <p class="mt-6 text-center text-sm text-gray-600">¿No tienes cuenta? <a href="register.html"
+          class="font-bold text-verabioma underline">Crear cuenta</a></p>
+    </section>
+  </main>
+  <script src="script-PP.js"></script>
+</body>
+
+</html>

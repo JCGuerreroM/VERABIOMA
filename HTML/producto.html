@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VeraBioma - Bienestar Natural</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            verabioma: '#40582E',
+            'verabioma-claro': '#6F8B4A',
+            beige: '#F4F1E7'
+          },
+          fontFamily: {
+            serifVerabioma: ['Georgia', 'serif']
+          }
+        }
+      }
+    };
+  </script>
+</head>
+
+<body>
+  <!-- ENCABEZADO PRINCIPAL -->
+  <header class="container-header">
+    <div class="logos">
+      <img id="imgVerabioma" src="img/img-logo/logo_verabioma.png" alt="Logo de VeraBioma" />
+      <h1 class="vera1">VeraBioma</h1>
+    </div>
+    <nav id="nav">
+      <ul>
+        <li><a href="inicio.html">Inicio</a></li>
+        <li><a href="producto.html">Producto</a></li>
+        <li><a href="perfil.html">Perfil</a></li>
+        <li><a href="carrito.html">Carrito</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- CATÁLOGO PRODUCTOS NORMALES -->
+  <section class="container-product" id="producto">
+    <h2>Elige el bienestar natural para ti y tu mascota</h2>
+
+    <div class="product-grid">
+      <article class="product-card" data-product="colageno-pet">
+        <img src="img/img-producto/Product-ColagenoPET.jpg" alt="Colágeno Vitalidad Peluda Pet" />
+        <h3>Colágeno Vitalidad Peluda</h3>
+        <p class="description">
+          Cuida sus articulaciones, fortalece su pelaje y regálale la energía
+          juguetona de siempre.
+        </p>
+        <p class="price-current">Ahora: $10.000</p>
+        <div class="card-actions">
+          <button class="btn-add">
+            <i class="fa-solid fa-cart-plus"></i> Añadir al carrito
+          </button>
+          <button class="btn-fav"><i class="fa-regular fa-heart"></i></button>
+        </div>
+      </article>
+
+      <article class="product-card" data-product="colageno">
+        <img src="img/img-producto/Product-COLAGENO.png" alt="Colágeno Hidrolizado Pureza Natural" />
+        <h3>Colágeno Pureza Natural</h3>
+        <p class="description">
+          Nutre tu piel desde adentro, dale firmeza a tu rostro y mantén tus
+          articulaciones ligeras.
+        </p>
+        <p class="price-current">Ahora: $10.000</p>
+        <div class="card-actions">
+          <button class="btn-add">
+            <i class="fa-solid fa-cart-plus"></i> Añadir al carrito
+          </button>
+          <button class="btn-fav"><i class="fa-regular fa-heart"></i></button>
+        </div>
+      </article>
+
+      <article class="product-card" data-product="kefir">
+        <img src="img/img-producto/Product-KEFIR.png" alt="Kéfir Artesanal Duo Pack" />
+        <h3>Doble Kéfir Artesanal</h3>
+        <p class="description">
+          Bebida probiótica suave y refrescante que abraza tu flora intestinal
+          y mejora tu digestión día a día.
+        </p>
+        <p class="price-current">Ahora: $10.000</p>
+        <div class="card-actions">
+          <button class="btn-add">
+            <i class="fa-solid fa-cart-plus"></i> Añadir al carrito
+          </button>
+          <button class="btn-fav"><i class="fa-regular fa-heart"></i></button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- DETALLES DE PRODUCTOS NORMALES -->
+  <section class="container-producto producto-detalle" id="producto-colageno" data-product="colageno">
+    <div class="columna-izquierda">
+      <div class="producto-imagen">
+        <img src="img/img-producto/Product-COLAGENO.png" alt="Colágeno Hidrolizado Pureza Natural" />
+      </div>
+      <aside class="recetas">
+        <h2>Formas de consumirlo</h2>
+        <div class="galeria-recetas">
+          <a class="receta-producto" href="receta.html"><img src="img/img-producto/Product-COLAGENO.png"
+              alt="Batido mañanero con colágeno" /></a>
+          <a class="receta-producto" href="receta.html"><img src="img/img-producto/Receta - Tostada.png"
+              alt="Café o infusión con colágeno" /></a>
+        </div>
+      </aside>
+    </div>
+    <div class="inforText">
+      <h1>Colágeno Pureza Natural</h1>
+      <p class="pAhor">Ahora: $10.000</p>
+      <ul class="lista-caracteristicas">
+        <li>Salud Articular</li>
+        <li>Piel Firme y Radiante</li>
+        <li>Alta Absorción</li>
+      </ul>
+      <h3>Beneficios que sentirás cada día:</h3>
+      <ul class="lista-beneficios">
+        <li>
+          Fortalece tus articulaciones y cartílagos para un movimiento sin
+          molestias.
+        </li>
+        <li>
+          Aporta elasticidad e hidratación a la piel, reduciendo líneas de
+          expresión.
+        </li>
+        <li>
+          Nutre uñas y cabello desde la raíz gracias a su fórmula fácil de
+          diluir.
+        </li>
+      </ul>
+      <div class="acciones-compra">
+        <label for="cantidad-colageno">Cantidad:</label>
+        <div class="selector-cantidad">
+          <button type="button" class="btn-menos">-</button>
+          <input type="number" id="cantidad-colageno" value="1" min="1" readonly />
+          <button type="button" class="btn-mas">+</button>
+        </div>
+        <div class="botones-accion">
+          <button type="button" class="btn-favorito">
+            <i class="fa-regular fa-heart"></i> Favorito
+          </button>
+          <button type="button" class="btn-carrito">
+            <i class="fa-solid fa-cart-plus"></i> Añadir al Carrito
+          </button>
+        </div>
+      </div>
+      <p class="nota-beneficios">
+        Fórmula limpia, libre de azúcares.
+        <a class="resena-producto" href="#resena">Crear tú reseña</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="container-producto producto-detalle" id="producto-colageno-pet" data-product="colageno-pet">
+    <div class="columna-izquierda">
+      <div class="producto-imagen">
+        <img src="img/img-producto/Product-ColagenoPET.jpg" alt="Colágeno para Mascotas Vitalidad Peluda" />
+      </div>
+      <aside class="recetas">
+        <h2>Ideas para consentirlos</h2>
+        <div class="galeria-recetas">
+          <a class="receta-producto" href="receta.html"><img src="img/img-producto/Product-ColagenoPET.jpg"
+              alt="Colágeno mezclado con alimento húmedo" /></a>
+          <a class="receta-producto" href="receta.html"><img src="img/img-producto/Product-ColagenoPET.jpg"
+              alt="Premios caseros con colágeno" /></a>
+        </div>
+      </aside>
+    </div>
+    <div class="inforText">
+      <h1>Colágeno Vitalidad Peluda (Pet)</h1>
+      <p class="pAhor">Ahora: $10.000</p>
+      <ul class="lista-caracteristicas">
+        <li>Cuidado Articular</li>
+        <li>Pelaje Brillante</li>
+        <li>Sabor Apetecible</li>
+      </ul>
+      <h3>Beneficios para tu mejor amigo:</h3>
+      <ul class="lista-beneficios">
+        <li>
+          Protege sus caderas y articulaciones para que corra y juegue con
+          libertad.
+        </li>
+        <li>
+          Fortalece la raíz del pelo reduciendo su caída y dándole más brillo.
+        </li>
+        <li>Fácil de mezclar con su comida diaria.</li>
+      </ul>
+      <div class="acciones-compra">
+        <label for="cantidad-pet">Cantidad:</label>
+        <div class="selector-cantidad">
+          <button type="button" class="btn-menos">-</button>
+          <input type="number" id="cantidad-pet" value="1" min="1" readonly />
+          <button type="button" class="btn-mas">+</button>
+        </div>
+        <div class="botones-accion">
+          <button type="button" class="btn-favorito">
+            <i class="fa-regular fa-heart"></i> Favorito
+          </button>
+          <button type="button" class="btn-carrito">
+            <i class="fa-solid fa-cart-plus"></i> Añadir al Carrito
+          </button>
+        </div>
+      </div>
+      <p class="nota-beneficios">
+        Aprobado para peluditos felices.
+        <a class="resena-producto" href="#resena">Crear tú reseña</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="container-producto producto-detalle" id="producto-kefir" data-product="kefir">
+    <div class="columna-izquierda">
+      <div class="producto-imagen">
+        <img src="img/img-producto/Product-KEFIR.png" alt="Botella de Kéfir Artesanal Natural" />
+      </div>
+      <aside class="recetas">
+        <h2>Ideas deliciosas con este Kéfir</h2>
+        <div class="galeria-recetas">
+          <a class="receta-producto" href="receta.html"><img src="img/img-producto/Product-KEFIR.png"
+              alt="Bowl de Frutas con Kéfir Artesanal" /></a>
+          <a class="receta-producto" href="receta.html"><img src="img/img-producto/Product-COLAGENO.png"
+              alt="Smoothie Energético de Kéfir" /></a>
+        </div>
+      </aside>
+    </div>
+    <div class="inforText">
+      <h1>Kéfir Artesanal Natural</h1>
+      <p class="pAhor">Ahora: $10.000</p>
+      <ul class="lista-caracteristicas">
+        <li>Probióticos Vivos</li>
+        <li>Digestión Ligera</li>
+        <li>Fermentación Natural</li>
+      </ul>
+      <h3>Beneficios que sentirás cada día:</h3>
+      <ul class="lista-beneficios">
+        <li>
+          Equilibra tu microbiota intestinal y reduce la pesadez después de
+          comer.
+        </li>
+        <li>
+          Rico en nutrientes esenciales y bacterias benéficas para tus
+          defensas.
+        </li>
+        <li>Sabor suave, fresco y cremoso.</li>
+      </ul>
+      <div class="acciones-compra">
+        <label for="cantidad-kefir">Cantidad:</label>
+        <div class="selector-cantidad">
+          <button type="button" class="btn-menos">-</button>
+          <input type="number" id="cantidad-kefir" value="1" min="1" readonly />
+          <button type="button" class="btn-mas">+</button>
+        </div>
+        <div class="botones-accion">
+          <button type="button" class="btn-favorito">
+            <i class="fa-regular fa-heart"></i> Favorito
+          </button>
+          <button type="button" class="btn-carrito">
+            <i class="fa-solid fa-cart-plus"></i> Añadir al Carrito
+          </button>
+        </div>
+      </div>
+      <p class="nota-beneficios">
+        Frescura garantizada.
+        <a class="resena-producto" href="#resena">Crear tú reseña</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- DETALLES DE PRODUCTOS CON OFERTA -->
+  <section class="container-producto producto-detalle" id="producto-colageno-oferta" data-product="colageno">
+    <div class="columna-izquierda">
+      <div class="producto-imagen">
+        <img src="img/img-producto/Product-COLAGENO.png" alt="Tarro de Colágeno Hidrolizado Pureza Natural" />
+      </div>
+      <aside class="recetas">
+        <h2>Ideas para disfrutar tu Colágeno</h2>
+        <div class="galeria-recetas">
+          <a class="receta-producto" href="receta.html"><img src="img/img-receta/Receta - Bol de Fresas.png"
+              alt="Smoothie de frutos rojos" /></a>
+          <a class="receta-producto" href="receta.html"><img src="img/img-receta/Receta - Tostada.png"
+              alt="Café o batido mañanero" /></a>
+        </div>
+      </aside>
+    </div>
+    <div class="inforText">
+      <div class="etiqueta-oferta">
+        <span class="badge-off">20% OFF</span>
+      </div>
+      <h1>Colágeno Pureza Natural</h1>
+      <p class="precio">Antes: <del class="pAnt">$10.000</del></p>
+      <p class="pAhor">Ahora: $8.000</p>
+      <ul class="lista-caracteristicas">
+        <li>Piel Radiante</li>
+        <li>Salud Articular</li>
+        <li>Fácil Disolución</li>
+      </ul>
+      <h3>Beneficios que sentirás cada día:</h3>
+      <ul class="lista-beneficios">
+        <li>
+          Nutre tu piel desde adentro, aportando firmeza, elasticidad y brillo
+          natural.
+        </li>
+        <li>Fortalece tus articulaciones y uñas.</li>
+      </ul>
+      <div class="acciones-compra">
+        <label for="cantidad-colageno-oferta">Cantidad:</label>
+        <div class="selector-cantidad">
+          <button type="button" class="btn-menos">-</button>
+          <input type="number" id="cantidad-colageno-oferta" value="1" min="1" readonly />
+          <button type="button" class="btn-mas">+</button>
+        </div>
+        <div class="botones-accion">
+          <button type="button" class="btn-favorito">
+            <i class="fa-regular fa-heart"></i> Favorito
+          </button>
+          <button type="button" class="btn-carrito">
+            <i class="fa-solid fa-cart-plus"></i> Añadir al Carrito
+          </button>
+        </div>
+      </div>
+      <p class="nota-beneficios">
+        Sin saborizantes artificiales.
+        <a class="resena-producto" href="#resena">Crear tú reseña</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="container-producto producto-detalle" id="producto-colageno-pet-oferta" data-product="colageno-pet">
+    <div class="columna-izquierda">
+      <div class="producto-imagen">
+        <img src="img/img-producto/Product-ColagenoPET.jpg" alt="Colágeno para Mascotas Vitalidad Peluda" />
+      </div>
+      <aside class="recetas">
+        <h2>Formas fáciles de servirlo</h2>
+        <div class="galeria-recetas">
+          <a class="receta-producto" href="receta.html"><img src="img/img-producto/Product-ColagenoPET.jpg"
+              alt="Mezclado con alimento" /></a>
+          <a class="receta-producto" href="receta.html"><img src="img/img-producto/Product-ColagenoPET.jpg"
+              alt="Premios caseros" /></a>
+        </div>
+      </aside>
+    </div>
+    <div class="inforText">
+      <div class="etiqueta-oferta">
+        <span class="badge-off">50% OFF</span>
+      </div>
+      <h1>Colágeno Vitalidad Peluda (Pet)</h1>
+      <p class="precio">Antes: <del class="pAnt">$10.000</del></p>
+      <p class="pAhor">Ahora: $5.000</p>
+      <ul class="lista-caracteristicas">
+        <li>Flexibilidad Articular</li>
+        <li>Pelaje Brillante</li>
+        <li>Sabor Apetecible</li>
+      </ul>
+      <h3>Beneficios para tu compañero:</h3>
+      <ul class="lista-beneficios">
+        <li>
+          Protege y regenera sus cartílagos para que corra y juegue sin
+          molestias.
+        </li>
+        <li>Fortalece el pelo reduciendo su caída.</li>
+      </ul>
+      <div class="acciones-compra">
+        <label for="cantidad-pet-oferta">Cantidad:</label>
+        <div class="selector-cantidad">
+          <button type="button" class="btn-menos">-</button>
+          <input type="number" id="cantidad-pet-oferta" value="1" min="1" readonly />
+          <button type="button" class="btn-mas">+</button>
+        </div>
+        <div class="botones-accion">
+          <button type="button" class="btn-favorito">
+            <i class="fa-regular fa-heart"></i> Favorito
+          </button>
+          <button type="button" class="btn-carrito">
+            <i class="fa-solid fa-cart-plus"></i> Añadir al Carrito
+          </button>
+        </div>
+      </div>
+      <p class="nota-beneficios">
+        Aprobado para perros y gatos.
+        <a class="resena-producto" href="#resena">Crear tú reseña</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="container-producto producto-detalle" id="producto-kefir-oferta" data-product="kefir">
+    <div class="columna-izquierda">
+      <div class="producto-imagen">
+        <img src="img/img-producto/Product-KEFIR.png" alt="Botella de Kéfir Artesanal Natural" />
+      </div>
+      <aside class="recetas">
+        <h2>Ideas deliciosas con este Kéfir</h2>
+        <div class="galeria-recetas">
+          <a class="receta-producto" href="receta.html"><img src="img/img-producto/Product-KEFIR.png"
+              alt="Bowl de Frutas con Kéfir" /></a>
+          <a class="receta-producto" href="receta.html"><img src="img/img-producto/Product-COLAGENO.png"
+              alt="Smoothie Energético" /></a>
+        </div>
+      </aside>
+    </div>
+    <div class="inforText">
+      <div class="etiqueta-oferta"><span class="badge-off">2X1</span></div>
+      <h1>Kéfir Artesanal Natural</h1>
+      <p class="precio">Antes: <del class="pAnt">$10.000</del> (1 und)</p>
+      <p class="pAhor">Ahora: $10.000 (Llevas 2)</p>
+      <ul class="lista-caracteristicas">
+        <li>Probióticos Vivos</li>
+        <li>Digestión Ligera</li>
+        <li>100% Natural</li>
+      </ul>
+      <h3>Beneficios que sentirás cada día:</h3>
+      <ul class="lista-beneficios">
+        <li>
+          Equilibra tu microbiota intestinal y elimina la pesadez tras cada
+          comida.
+        </li>
+        <li>Nutre tus defensas de forma natural con probióticos activos.</li>
+      </ul>
+      <div class="acciones-compra">
+        <label for="cantidad-kefir-oferta">Cantidad:</label>
+        <div class="selector-cantidad">
+          <button type="button" class="btn-menos">-</button>
+          <input type="number" id="cantidad-kefir-oferta" value="1" min="1" readonly />
+          <button type="button" class="btn-mas">+</button>
+        </div>
+        <div class="botones-accion">
+          <button type="button" class="btn-favorito">
+            <i class="fa-regular fa-heart"></i> Favorito
+          </button>
+          <button type="button" class="btn-carrito">
+            <i class="fa-solid fa-cart-plus"></i> Añadir al Carrito
+          </button>
+        </div>
+      </div>
+      <p class="nota-beneficios">
+        Frescura garantizada.
+        <a class="resena-producto" href="#resena">Crear tú reseña</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO OFERTAS DEL DÍA -->
+  <section class="container-product" id="producto-oferta">
+    <h2>Ofertas Especiales para tu Bienestar Natural</h2>
+
+    <div class="product-grid">
+      <article class="product-card" data-product="colageno-pet">
+        <span class="badge off">50% OFF</span>
+        <img src="img/img-producto/Product-ColagenoPET.jpg" alt="Colágeno Vitalidad Peluda Pet" />
+        <h3>Colágeno Vitalidad Peluda</h3>
+        <p class="description">
+          Cuida sus articulaciones, fortalece su pelaje y devuélvele la
+          energía juguetona de siempre.
+        </p>
+        <p class="price-old">Antes: <span>$10.000</span></p>
+        <p class="price-current">Ahora: $5.000</p>
+        <div class="card-actions">
+          <button class="btn-add">
+            <i class="fa-solid fa-cart-plus"></i> Añadir al carrito
+          </button>
+          <button class="btn-fav"><i class="fa-regular fa-heart"></i></button>
+        </div>
+      </article>
+
+      <article class="product-card" data-product="colageno">
+        <span class="badge off">20% OFF</span>
+        <img src="img/img-producto/Product-COLAGENO.png" alt="Colágeno Hidrolizado Pureza Natural" />
+        <h3>Colágeno Pureza Natural</h3>
+        <p class="description">
+          Nutre tu piel desde adentro, aporta firmeza a tu rostro y mantén tus
+          articulaciones ligeras.
+        </p>
+        <p class="price-old">Antes: <span>$10.000</span></p>
+        <p class="price-current">Ahora: $8.000</p>
+        <div class="card-actions">
+          <button class="btn-add">
+            <i class="fa-solid fa-cart-plus"></i> Añadir al carrito
+          </button>
+          <button class="btn-fav"><i class="fa-regular fa-heart"></i></button>
+        </div>
+      </article>
+
+      <article class="product-card" data-product="kefir">
+        <span class="badge off">2X1</span>
+        <img src="img/img-producto/Product-KEFIR.png" alt="Kéfir Artesanal Duo Pack" />
+        <h3>Doble Kéfir Artesanal</h3>
+        <p class="description">
+          Bebida probiótica suave y refrescante que equilibra tu microbiota y
+          transforma tu digestión.
+        </p>
+        <p class="price-old">Antes: <span>$10.000</span></p>
+        <p class="price-current">Ahora: $10.000 (Llevas 2)</p>
+        <div class="card-actions">
+          <button class="btn-add">
+            <i class="fa-solid fa-cart-plus"></i> Añadir al carrito
+          </button>
+          <button class="btn-fav"><i class="fa-regular fa-heart"></i></button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="cabezadoSG">
+    <a href="inicio.html" class="arriba" aria-label="Volver arriba">
+      <i class="fa-solid fa-angles-up"></i>
+    </a>
+    <h1 id="vera2">VeraBioma</h1>
+    <div class="redes">
+      <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+
+  </footer>
+
+  <script src="script-PP.js"></script>
+  </body>
+</html>
+
+<!--
+    ==========================================
+                    NOTAS
+    ========================================== 
+   
+    1. Cuando vamos agregar una secion importante poner como titulo de nota: (tipo nota y asi saber para que sirve es parte)
+    Ejemplo:
+           < !-- HEADER / ENCABEZADO FIJO -- >
+    2. Siempre poner una nota si se cambia un codigo del original.  
+-->

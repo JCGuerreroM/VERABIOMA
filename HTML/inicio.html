@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VeraBioma - Bienestar Natural</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        verabioma: '#40582E',
+                        'verabioma-claro': '#6F8B4A',
+                        beige: '#F4F1E7'
+                    },
+                    fontFamily: {
+                        serifVerabioma: ['Georgia', 'serif']
+                    }
+                }
+            }
+        };
+    </script>
+  </head>
+
+  <body>
+    <!-- ENCABEZADO PRINCIPAL -->
+    <header 
+      class="container-header">
+      <div class="logos">
+        <img
+          id="imgVerabioma"
+          src="img/img-logo/logo_verabioma.png"
+          alt="Logo de VeraBioma"
+        />
+        <h1 class="vera1">VeraBioma</h1>
+      </div>
+      <nav id="nav">
+        <ul>
+          <li><a href="inicio.html">Inicio</a></li>
+          <li><a href="producto.html">Producto</a></li>
+          <li><a href="perfil.html">Perfil</a></li>
+          <li><a href="carrito.html">Carrito</a></li>
+        </ul>
+      </nav>
+    </header>
+
+     <!-- SECCIÓN INICIO -->
+    <section 
+      class="inicio" id="inicio">
+      <h1>Ofertas Especiales</h1>
+      <p>
+        Bienestar natural y vitalidad para ti y tu familia a un precio
+        imperdible
+      </p>
+
+      <div id="ofertas">
+        <div class="oferta" data-product="kefir">
+          <img src="img/img-producto/Product-KEFIR.png" alt="Kéfir Artesanal Duo Pack" />
+          <h2>Doble Kéfir Artesanal</h2>
+          <p>Antes: <a>$10.000</a> (2x1)</p>
+          <p class="pValor">Ahora: $10.000 (Lleva 2)</p>
+          <button>Ver Producto</button>
+        </div>
+        <div class="oferta" data-product="colageno">
+          <img
+            src="img/img-producto/Product-COLAGENO.png"
+            alt="Colágeno Hidrolizado Natural"
+          />
+          <h2>Colágeno Hidrolizado Pureza Natural</h2>
+          <p>Antes: <a>$10.000</a> (20% OFF)</p>
+          <p class="pValor">Ahora: $8.000</p>
+          <button>Ver Producto</button>
+        </div>
+        <div class="oferta" data-product="colageno-pet">
+          <img
+            src="img/img-producto/Product-ColagenoPET.jpg"
+            alt="Colágeno para Mascotas Vitalidad Pet"
+          />
+          <h2>Colágeno Vitalidad Peluda (Pet)</h2>
+          <p>Antes: <a>$10.000</a> (50% OFF)</p>
+          <p class="pValor">Ahora: $5.000</p>
+          <button>Ver Producto</button>
+        </div>
+      </div>
+
+      <div id="recetas">
+        <h2>Recetas Deliciosas para Integrar en tu Día</h2>
+        <div class="receta receta-principal">
+          <img
+            src="img/img-receta/Receta - Bol de Fresas.png"
+            alt="Bowl de Fresas y Kéfir"
+          />
+          <h2>Bowl Antioxidante de Fresas y Kéfir</h2>
+          <p>
+            Una combinación cremosa con leche de almendras y frutos rojos para
+            cuidar tu digestión con un sabor increíble.
+          </p>
+          <button class="receta-producto">Ver Receta Completa</button>
+        </div>
+        <div class="receta receta-secundaria">
+          <img src="img/img-receta/Receta - Tostada.png" alt="Tostada Energética" />
+          <h2>Tostada Energética y Proteica</h2>
+          <p>
+            La opción crujiente y ligera ideal para llenar de vitalidad tus
+            mañanas de forma práctica.
+          </p>
+          <button class="receta-producto">Ver Receta Completa</button>
+        </div>
+      </div>
+
+      <div id="resenas">
+        <div class="resena">
+          <span class="estrellas">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+          <p>
+            "El sabor del kéfir es súper fresco y suave. Mi digestión mejoró
+            desde la primera semana."
+          </p>
+          <p>Marina P. - Bogotá</p>
+        </div>
+        <div class="resena">
+          <span class="estrellas">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+          <p>
+            "A mi perrito le encanta el colágeno en su comida, lo noto con mucha
+            más energía en sus paseos."
+          </p>
+          <p>Carlos M. - Medellín</p>
+        </div>
+        <div class="resena">
+          <span class="estrellas">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+          <p>
+            "Excelente calidad en el colágeno, se disuelve súper fácil en los
+            batidos mañaneros."
+          </p>
+          <p>Andrea R. - Cali</p>
+        </div>
+        <div class="resena">
+          <span class="estrellas">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+          <p>
+            "El envío fue rapidísimo y los productos llegaron súper bien
+            empacados. ¡Totalmente recomendados!"
+          </p>
+          <p>Laura G. - Bucaramanga</p>
+        </div>
+        <div class="resena">
+          <span class="estrellas">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+          <p>
+            "Aproveché la oferta del 2x1 en Kéfir y valió 100% la pena, el toque
+            perfecto para el desayuno."
+          </p>
+          <p>Felipe T. - Pereira</p>
+        </div>
+        <!-- Duplicados para carrusel infinito -->
+        <div class="resena">
+          <span class="estrellas">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+          <p>
+            "El sabor del kéfir es súper fresco y suave. Mi digestión mejoró
+            desde la primera semana."
+          </p>
+          <p>Marina P. - Bogotá</p>
+        </div>
+        <div class="resena">
+          <span class="estrellas">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+          <p>
+            "A mi perrito le encanta el colágeno en su comida, lo noto con mucha
+            más energía en sus paseos."
+          </p>
+          <p>Carlos M. - Medellín</p>
+        </div>
+        <div class="resena">
+          <span class="estrellas">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+          <p>
+            "Excelente calidad en el colágeno, se disuelve súper fácil en los
+            batidos mañaneros."
+          </p>
+          <p>Andrea R. - Cali</p>
+        </div>
+        <div class="resena">
+          <span class="estrellas">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+          <p>
+            "El envío fue rapidísimo y los productos llegaron súper bien
+            empacados. ¡Totalmente recomendados!"
+          </p>
+          <p>Laura G. - Bucaramanga</p>
+        </div>
+        <div class="resena">
+          <span class="estrellas">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+          <p>
+            "Aproveché la oferta del 2x1 en Kéfir y valió 100% la pena, el toque
+            perfecto para el desayuno."
+          </p>
+          <p>Felipe T. - Pereira</p>
+        </div>
+      </div>
+    </section>
+
+        <!-- PIE DE PÁGINA -->
+    <footer 
+      class="cabezadoSG">
+      <a href="inicio.html" class="arriba" aria-label="Volver arriba">
+        <i class="fa-solid fa-angles-up"></i>
+      </a>
+      <h1 id="vera2">VeraBioma</h1>
+      <div class="redes">
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+      
+    </footer>
+
+    <script src="script-PP.js"></script>
+  </body>
+</html>
+
+<!--
+    ==========================================
+                    NOTAS
+    ========================================== 
+   
+    1. Cuando vamos agregar una secion importante poner como titulo de nota: (tipo nota y asi saber para que sirve es parte)
+    Ejemplo:
+           < !-- HEADER / ENCABEZADO FIJO -- >
+    2. Siempre poner una nota si se cambia un codigo del original.  
+-->
