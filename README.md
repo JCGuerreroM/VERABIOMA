@@ -39,12 +39,12 @@ Verabioma/
 - JavaScript
 - Node.js
 - Express
-- MySQL/MariaDB mediante `mysql2`
+- PostgreSQL
 - `cors` y `dotenv`
 
 ## Requisitos
 
-Instala Node.js y npm. También necesitas tener MySQL o MariaDB configurado con la base de datos y las tablas que utiliza el backend.
+Instala Node.js y npm. También necesitas tener PostgreSQL configurado con la base de datos y las tablas que utiliza el backend.
 
 ## Instalación
 
