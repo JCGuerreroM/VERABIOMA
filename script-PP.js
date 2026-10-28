@@ -870,3 +870,513 @@ function toggleForm(formId) {
     btnDatos.classList.remove('active');
   }
 }
+
+/* ==========================================
+        CARRITO DE COMPRAS
+   ========================================== */
+
+// Variable global: tarjeta en edición (null = modo agregar)
+// NOTA FUTURA: al conectar con la BD, este dato debe venir del backend
+let tarjetaEnEdicion = null;
+
+// ==========================================
+// 1. NAVEGACIÓN ENTRE PASOS
+// ==========================================
+function irAPaso(idPaso) {
+  // Bloquear avance si no hay método de pago seleccionado
+  // NOTA FUTURA: validar también que el carrito no esté vacío
+  if (idPaso === "paso-procesando") {
+    if (!document.querySelector("input[name='metodo-pago']:checked")) {
+      alert("Selecciona un método de pago antes de continuar.");
+      return;
+    }
+  }
+
+  document.querySelectorAll(".carrito-section").forEach((seccion) => {
+    seccion.classList.add("oculto");
+  });
+
+  const paso = document.getElementById(idPaso);
+  if (paso) {
+    paso.classList.remove("oculto");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // NOTA FUTURA: aquí se debe conectar con la pasarela de pago real
+  if (idPaso === "paso-procesando") {
+    actualizarMetodoSeleccionado();
+    setTimeout(() => irAPaso("paso-confirmado"), 3000);
+  }
+
+  // Iniciar animación del progreso del pedido
+  // NOTA FUTURA: aquí se debe consultar el estado real desde la BD
+  if (idPaso === "paso-confirmado") {
+    actualizarMetodoSeleccionado();
+    iniciarProgresoPedido();
+  }
+}
+
+// ==========================================
+// 2. ACTUALIZAR MÉTODO DE PAGO MOSTRADO
+// ==========================================
+function actualizarMetodoSeleccionado() {
+  const seleccionado = document.querySelector("input[name='metodo-pago']:checked");
+  if (!seleccionado) return;
+
+  const nombre = capitalizar(seleccionado.value);
+  document.querySelectorAll(".metodo-seleccionado strong").forEach((el) => {
+    el.textContent = nombre;
+  });
+}
+
+// ==========================================
+// 3. PROGRESO DEL PEDIDO (CADA 8 SEGUNDOS)
+// ==========================================
+function iniciarProgresoPedido() {
+  const pasos = document.querySelectorAll(".progreso-paso");
+  if (pasos.length === 0) return;
+
+  // Resetear todos y activar el primero
+  pasos.forEach((p) => p.classList.remove("activo"));
+  pasos[0].classList.add("activo");
+
+  let indexActual = 0;
+
+  // NOTA FUTURA: al conectar con la BD, este avance debería depender del
+  // estado real del pedido (empacando, en camino, entregado)
+  const avanzar = () => {
+    indexActual++;
+
+    if (indexActual < pasos.length) {
+      pasos[indexActual].classList.add("activo");
+      setTimeout(avanzar, 8000); // 8 segundos por cada etapa
+    } else {
+      // Último paso "Entregado" activado -> redirigir después de 8s
+      setTimeout(() => {
+        window.location.href = "inicio.html";
+      }, 8000);
+    }
+  };
+
+  // Esperar 8s antes de avanzar al segundo paso
+  setTimeout(avanzar, 8000);
+}
+
+// ==========================================
+// 4. FORMATEAR PRECIOS
+// ==========================================
+function formatearPrecio(valor) {
+  return "$" + valor.toLocaleString("es-CO");
+}
+
+// ==========================================
+// 5. ACTUALIZAR RESUMEN DEL CARRITO
+// ==========================================
+function actualizarResumen() {
+  const items = document.querySelectorAll(".producto-item");
+  const resumenLista = document.querySelector(".carrito-resumen .resumen-lista");
+  const totalEl = document.getElementById("total-pagar");
+
+  if (!resumenLista || !totalEl) return;
+
+  let total = 0;
+  let html = "";
+
+  items.forEach((item) => {
+    const nombre = item.querySelector("h3").textContent;
+    const precio = parseInt(item.dataset.precio);
+    const cantidad = parseInt(item.querySelector(".cantidad").textContent);
+    const subtotal = precio * cantidad;
+
+    total += subtotal;
+    html += `<li><span>${nombre} x <strong>${cantidad}</strong></span><span>${formatearPrecio(subtotal)}</span></li>`;
+  });
+
+  resumenLista.innerHTML = html;
+  totalEl.textContent = formatearPrecio(total);
+
+  // Actualizar totales en las demás secciones
+  document.querySelectorAll(".resumen-total strong").forEach((el) => {
+    el.textContent = formatearPrecio(total);
+  });
+}
+
+// ==========================================
+// 6. CONTADORES DE CANTIDAD
+// ==========================================
+function inicializarContadores() {
+  document.querySelectorAll(".producto-item").forEach((item) => {
+    const precio = parseInt(item.dataset.precio);
+    const cantidadEl = item.querySelector(".cantidad");
+    const subtotalEl = item.querySelector(".producto-subtotal");
+
+    if (!cantidadEl || !subtotalEl) return;
+
+    item.querySelectorAll(".btn-contador").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        let cantidad = parseInt(cantidadEl.textContent);
+
+        if (btn.dataset.accion === "sumar") {
+          cantidad++;
+        } else if (btn.dataset.accion === "restar" && cantidad > 1) {
+          cantidad--;
+        }
+
+        cantidadEl.textContent = cantidad;
+        subtotalEl.textContent = formatearPrecio(precio * cantidad);
+        actualizarResumen();
+      });
+    });
+  });
+}
+
+// ==========================================
+// 7. ELIMINAR PRODUCTO DEL CARRITO
+// ==========================================
+function inicializarEliminarProductos() {
+  document.querySelectorAll(".btn-eliminar").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".producto-item");
+      const nombre = item.querySelector("h3").textContent;
+
+      if (confirm(`Eliminar "${nombre}" del carrito?`)) {
+        item.remove();
+        actualizarResumen();
+
+        if (document.querySelectorAll(".producto-item").length === 0) {
+          const contenedor = document.querySelector(".carrito-productos");
+          if (contenedor) {
+            contenedor.innerHTML =
+              '<p style="text-align:center; padding:40px; color:#666;">Tu carrito está vacío</p>';
+          }
+        }
+      }
+    });
+  });
+}
+
+// ==========================================
+// 8. INICIALIZAR LISTENERS DE UNA TARJETA
+// ==========================================
+function inicializarTarjeta(card) {
+  const btnDefault = card.querySelector(".btn-default");
+  const btnEditar = card.querySelector(".btn-editar");
+  const btnEliminar = card.querySelector(".btn-peligro");
+  const radio = card.querySelector("input[type='radio']");
+
+  // Radio: marcar como seleccionado
+  if (radio) {
+    radio.addEventListener("change", () => {
+      document.querySelectorAll(".metodo-card").forEach((c) => {
+        c.classList.remove("seleccionado");
+      });
+      card.classList.add("seleccionado");
+    });
+  }
+
+  // Hacer predeterminado
+  if (btnDefault) {
+    btnDefault.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      hacerPredeterminado(card);
+    });
+  }
+
+  // Editar (pre-rellena el formulario)
+  if (btnEditar) {
+    btnEditar.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      editarTarjeta(card);
+    });
+  }
+
+  // Eliminar
+  if (btnEliminar) {
+    btnEliminar.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const nombre =
+        card.querySelector(".metodo-info p strong")?.textContent ||
+        "este método";
+
+      // No permitir eliminar el predeterminado
+      if (card.dataset.default === "true") {
+        alert(
+          "No puedes eliminar el método predeterminado. Asigna otro como predeterminado primero."
+        );
+        return;
+      }
+
+      if (confirm(`Eliminar el método de pago "${nombre}"?`)) {
+        card.remove();
+
+        // Si era el seleccionado, marcar el primero disponible
+        const restantes = document.querySelectorAll(".metodo-card");
+        if (restantes.length > 0) {
+          const algunoSeleccionado = document.querySelector(
+            "input[name='metodo-pago']:checked"
+          );
+          if (!algunoSeleccionado) {
+            const primerRadio = restantes[0].querySelector("input[type='radio']");
+            if (primerRadio) {
+              primerRadio.checked = true;
+              restantes[0].classList.add("seleccionado");
+            }
+          }
+        }
+      }
+    });
+  }
+}
+
+// ==========================================
+// 9. HACER PREDETERMINADA UNA TARJETA
+// ==========================================
+function hacerPredeterminado(card) {
+  // Quitar predeterminado a TODAS
+  document.querySelectorAll(".metodo-card").forEach((c) => {
+    c.dataset.default = "false";
+    const badge = c.querySelector(".metodo-badge");
+    if (badge) badge.remove();
+
+    const btnDef = c.querySelector(".btn-default");
+    if (btnDef) btnDef.style.display = "";
+  });
+
+  // Poner en la seleccionada
+  card.dataset.default = "true";
+  const info = card.querySelector(".metodo-info");
+  const nuevoBadge = document.createElement("span");
+  nuevoBadge.className = "metodo-badge";
+  nuevoBadge.textContent = "Predeterminado";
+  info.insertBefore(nuevoBadge, info.firstChild);
+
+  const btnDef = card.querySelector(".btn-default");
+  if (btnDef) btnDef.style.display = "none";
+}
+
+// ==========================================
+// 10. EDITAR TARJETA (PRE-RELLENA FORMULARIO)
+// ==========================================
+function editarTarjeta(card) {
+  tarjetaEnEdicion = card;
+
+  const tipo = card.querySelector("input[type='radio']").value;
+  const titular = card.dataset.titular || "";
+  const numero = card.dataset.numero || "";
+  const telefono = card.dataset.telefono || "";
+
+  document.getElementById("tipo-tarjeta").value = tipo;
+  document.getElementById("nombre-propietario").value = titular;
+  document.getElementById("numero-tarjeta").value = numero;
+  document.getElementById("telefono-tarjeta").value = telefono;
+
+  // Cambiar título del formulario
+  document.querySelector(
+    "#paso-agregar-tarjeta .titulo-seccion"
+  ).textContent = "Editar Método de Pago";
+
+  irAPaso("paso-agregar-tarjeta");
+}
+
+// ==========================================
+// 11. VALIDAR CAMPOS DE TARJETA
+// ==========================================
+// NOTA FUTURA: se puede ampliar con validación de fecha de vencimiento,
+// CVV (3-4 dígitos) y algoritmo de Luhn para tarjetas reales.
+function validarTarjeta(tipo, titular, numero, telefono) {
+  const errores = [];
+
+  if (!tipo) {
+    errores.push("- Selecciona el tipo de tarjeta.");
+  }
+
+  if (!titular || titular.trim().length < 3) {
+    errores.push(
+      "- El nombre del propietario debe tener al menos 3 caracteres."
+    );
+  }
+
+  if (tipo === "nequi" || tipo === "paypal") {
+    // Nequi/PayPal: número de teléfono de 10 dígitos (Colombia)
+    if (!/^\d{10}$/.test(numero)) {
+      errores.push("- El número debe tener exactamente 10 dígitos.");
+    }
+  } else if (
+    tipo === "credito" ||
+    tipo === "debito" ||
+    tipo === "bancolombia"
+  ) {
+    // Tarjetas: entre 13 y 19 dígitos
+    if (!/^\d{13,19}$/.test(numero)) {
+      errores.push(
+        "- El número de tarjeta debe tener entre 13 y 19 dígitos."
+      );
+    }
+  }
+
+  if (!/^\d{10}$/.test(telefono)) {
+    errores.push("- El teléfono debe tener exactamente 10 dígitos.");
+  }
+
+  return errores;
+}
+
+// ==========================================
+// 12. FORMULARIO AGREGAR / EDITAR TARJETA
+// ==========================================
+function inicializarFormTarjeta() {
+  const form = document.getElementById("form-tarjeta");
+  if (!form) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const tipo = document.getElementById("tipo-tarjeta").value;
+    const titular = document
+      .getElementById("nombre-propietario")
+      .value.trim();
+    const numero = document.getElementById("numero-tarjeta").value.trim();
+    const telefono = document.getElementById("telefono-tarjeta").value.trim();
+
+    // Validar
+    const errores = validarTarjeta(tipo, titular, numero, telefono);
+    if (errores.length > 0) {
+      alert("Corrige los siguientes errores:\n\n" + errores.join("\n"));
+      return;
+    }
+
+    // NOTA FUTURA: al conectar con la BD, aquí debe hacerse POST/PUT según sea
+    // tarjetaEnEdicion (editar) o crear nueva
+
+    if (tarjetaEnEdicion) {
+      // --- MODO EDITAR ---
+      tarjetaEnEdicion.dataset.titular = titular;
+      tarjetaEnEdicion.dataset.numero = numero;
+      tarjetaEnEdicion.dataset.telefono = telefono;
+      tarjetaEnEdicion.dataset.tipo = tipo;
+
+      tarjetaEnEdicion.querySelector("input[type='radio']").value = tipo;
+      tarjetaEnEdicion.querySelector(".metodo-info p strong").textContent =
+        capitalizar(tipo);
+
+      // Actualizar el número mostrado (2do párrafo)
+      const parrafos = tarjetaEnEdicion.querySelectorAll(".metodo-info p");
+      if (parrafos[1]) {
+        parrafos[1].innerHTML = `Número: <span>${numero}</span>`;
+      }
+
+      tarjetaEnEdicion = null;
+      alert("Método actualizado correctamente.");
+    } else {
+      // --- MODO AGREGAR ---
+      const metodosContainer = document.querySelector(".metodos-pago");
+      const btnAgregar = metodosContainer.querySelector(".btn-agregar-metodo");
+
+      const nuevaTarjeta = document.createElement("label");
+      nuevaTarjeta.className = "metodo-card";
+      nuevaTarjeta.dataset.default = "false";
+      nuevaTarjeta.dataset.tipo = tipo;
+      nuevaTarjeta.dataset.titular = titular;
+      nuevaTarjeta.dataset.numero = numero;
+      nuevaTarjeta.dataset.telefono = telefono;
+
+      nuevaTarjeta.innerHTML = `
+        <input type="radio" name="metodo-pago" value="${tipo}" />
+        <div class="metodo-info">
+          <p><strong>${capitalizar(tipo)}</strong></p>
+          <p>Número: <span>${numero}</span></p>
+        </div>
+        <div class="metodo-acciones">
+          <button type="button" class="btn-icono btn-default" title="Hacer predeterminado">
+            <i class="fa-solid fa-star"></i>
+          </button>
+          <button type="button" class="btn-icono btn-editar" title="Editar">
+            <i class="fa-solid fa-pen"></i>
+          </button>
+          <button type="button" class="btn-icono btn-peligro" title="Eliminar">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      `;
+
+      metodosContainer.insertBefore(nuevaTarjeta, btnAgregar);
+      inicializarTarjeta(nuevaTarjeta);
+
+      alert("Método agregado correctamente.");
+    }
+
+    // Limpiar y volver
+    form.reset();
+    document.querySelector(
+      "#paso-agregar-tarjeta .titulo-seccion"
+    ).textContent = "Agregar Método de Pago";
+    irAPaso("paso-pago");
+  });
+}
+
+// ==========================================
+// 13. CANCELAR FORMULARIO
+// ==========================================
+function cancelarFormulario() {
+  tarjetaEnEdicion = null;
+  const form = document.getElementById("form-tarjeta");
+  if (form) form.reset();
+  document.querySelector(
+    "#paso-agregar-tarjeta .titulo-seccion"
+  ).textContent = "Agregar Método de Pago";
+  irAPaso("paso-pago");
+}
+
+// ==========================================
+// 14. FUNCIÓN AUXILIAR: CAPITALIZAR
+// ==========================================
+function capitalizar(texto) {
+  if (!texto) return "";
+  return texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
+}
+
+// ==========================================
+// 15. BOTÓN VOLVER ARRIBA
+// ==========================================
+function inicializarBotonArriba() {
+  const btnArriba = document.querySelector(".arriba");
+  if (btnArriba) {
+    btnArriba.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+}
+
+// ==========================================
+// 16. INICIALIZACIÓN AL CARGAR
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+  actualizarResumen();
+  inicializarContadores();
+  inicializarEliminarProductos();
+  inicializarFormTarjeta();
+  inicializarBotonArriba();
+
+  // Inicializar todas las tarjetas existentes
+  document.querySelectorAll(".metodo-card").forEach((card) => {
+    inicializarTarjeta(card);
+  });
+
+  // Marcar la primera tarjeta como seleccionada si no hay ninguna
+  const tarjetas = document.querySelectorAll(".metodo-card");
+  if (
+    tarjetas.length > 0 &&
+    !document.querySelector(".metodo-card.seleccionado")
+  ) {
+    tarjetas[0].classList.add("seleccionado");
+    const radio = tarjetas[0].querySelector("input[type='radio']");
+    if (radio) radio.checked = true;
+  }
+
+  console.log("Carrito VeraBioma listo.");
+});
